@@ -1,3 +1,9 @@
+### Discogs to Spotify
+
+
+This a React/Next.js app that creates Spotify playlists based on your Discogs collections.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
