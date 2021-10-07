@@ -1,0 +1,43 @@
+.container {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+
+    .label {
+        display: flex;
+        font-size: 1.3rem;
+    }
+
+    input {
+        margin-top: 8px;
+        width: 80%;
+        height: 30px;
+        outline: none;
+        border-radius: 8px;
+        font-size: 1rem;
+
+        &:focus {
+            border: 3px solid #555;
+        }
+    }
+
+    button {
+        height: 3rem;
+        border-radius: 3rem;
+        background: var(--green-500);
+        border: 0;
+        padding: 0 1.5rem;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: var(--white);
+        font-weight: bold;
+
+        &:hover {
+            filter: brightness(0.7)
+        }
+    }
+}

@@ -15,11 +15,10 @@ export default function Home() {
     </Head>
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
-          <span>Welcome to</span>
-          <h1>Discogs to <span>Spotify</span></h1>
+            <h1>Discogs to <span>Spotify</span></h1>
           <p>
-          Miss your vinyl collection when on the road? We want to help you import your
-          Discogs collection as playlists in <span>Spotify</span>!
+          Miss your vinyl collection when on the road? We want to help you import your 
+          <span style={{color: 'white'}}> Discogs</span> collection as playlists into <span>Spotify</span>!
           </p>
           <SignInButton />
         </section>
