@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import axios from 'axios'
 
 import { BsSearch } from 'react-icons/bs'
 import styles from './home.module.scss'
+
+const axios = require('axios');
 
 const Collection = () => {
 
@@ -16,29 +17,28 @@ const Collection = () => {
         
         const listId = url.split('/').pop();
 
-        let tempAlbuns = []
+        let tempAlbuns = [];
 
-        axios.get(discogsUrl + `/lists/${listId}`)
-          .then((response) => {
-            const data = response.data.items
-                .map((item) => axios.get(item.resource_url))
-                Promise.all(data).then((albuns) => {
-                    console.log(albuns)
-                    albuns.forEach((album) => {
-                        tempAlbuns[album.data.title] = album.data.tracklist
-                    })
-                    console.log(tempAlbuns)
-                    setAlbuns(tempAlbuns)
-            }).catch((error) => {
+        const getAlbuns = async () => {
+            try {
+               const resp = await axios.get(`${discogsUrl}/lists/${listId}`);
+               const data = resp.data.items
+               
+               for(let i = 0; i < data.length; i++) {
+                   const album = await axios.get(data[i].resource_url)
+                   tempAlbuns[album.data.title] = album.data.tracklist
+               }
+               setAlbuns(tempAlbuns)
+               console.log(tempAlbuns)  
+
+               return data
+               
+            } catch (error) {
                 console.log(error)
-            })
-            
-        })
-        .catch((error) => {
-            console.log(error)
-        });
-
-
+            } 
+        } 
+        
+        getAlbuns()
     };
 
     return (
