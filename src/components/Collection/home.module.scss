@@ -11,14 +11,22 @@
 
     input {
         margin-top: 8px;
-        width: 80%;
-        height: 30px;
+        width: 50%;
+        height: 35px;
         outline: none;
         border-radius: 8px;
         font-size: 1rem;
-
+        padding: 10px;
+        background-image: url('../../../public/images/search.png');
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding-left: 40px;
+        transition: width 0.4s ease-in-out;
+        
         &:focus {
             border: 3px solid #555;
+            width: 80%;
         }
     }
 
