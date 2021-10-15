@@ -3,7 +3,13 @@ import { FiX } from 'react-icons/fi';
 
 import styles from './styles.module.scss';
 
+import env from 'react-dotenv'
+import {test} from '../../lib/dotenv'
+
 export function SignInButton() {
+    test();
+    console.log(process.env.REACT_APP_CLIENT_ID);
+
     const isUserLoggedIn = false;
     
     return isUserLoggedIn ? (

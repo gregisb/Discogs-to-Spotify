@@ -29,7 +29,6 @@ const Collection = () => {
                    tempAlbuns[album.data.title] = album.data.tracklist
                }
                setAlbuns(tempAlbuns)
-               console.log(tempAlbuns)  
 
                return data
                
