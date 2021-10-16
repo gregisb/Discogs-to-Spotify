@@ -3,19 +3,22 @@ import { FiX } from 'react-icons/fi';
 
 import styles from './styles.module.scss';
 
-import env from 'react-dotenv'
-import {test} from '../../lib/dotenv'
+import {signIn, signOut, useSession} from 'next-auth/client';
 
 export function SignInButton() {
-    test();
-    console.log(process.env.REACT_APP_CLIENT_ID);
+    
+    console.log(process.env.NEXT_PUBLIC_CLIENT_ID);
 
     const isUserLoggedIn = false;
+
+    const [session, loading] = useSession();
+    console.log(session)
     
     return isUserLoggedIn ? (
         <button 
             type="button"
             className={styles.signInButton}
+            onClick={signOut}
             >
             <FaSpotify color="white"/>
             Guilherme Regis
@@ -25,6 +28,7 @@ export function SignInButton() {
         <button 
         type="button"
         className={styles.signInButton}
+        onClick={signIn}
         >
         <FaSpotify color="#white"/>
         Sign in with Spotify
