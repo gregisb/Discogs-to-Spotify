@@ -5,9 +5,6 @@ import styles from './home.module.scss';
 
 import Collection from '../../components/Collection/'
 
-
-
-
 export default function About() {
   return (
     <>

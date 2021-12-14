@@ -17,8 +17,8 @@ export default function Home() {
         <section className={styles.hero}>
             <h1>Discogs to <span>Spotify</span></h1>
           <p>
-          Miss your vinyl collection when on the road? We want to help you import your 
-          <span style={{color: 'white'}}> Discogs</span> collection as playlists into <span>Spotify</span>!
+          Your 
+          <span style={{color: 'white'}}> Discogs</span> collections on <span>Spotify</span>.
           </p>
           <SignInButton />
         </section>
