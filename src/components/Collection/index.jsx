@@ -50,7 +50,7 @@ const Collection = () => {
         </form>
         </div>
 
-        
+        <div>
             {Object.keys(albuns).map((albumTitle, index) => 
                <div key={index}>
                <p>
@@ -59,7 +59,10 @@ const Collection = () => {
                     
                 <ul >{albuns[albumTitle].map((track, index2) => 
                     <li key={index2}>{track.title}</li>)}
-                </ul></div>)}
+            </ul>
+            </div>)}
+        </div>
+            
         
         </>
     );

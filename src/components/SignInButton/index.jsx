@@ -21,19 +21,21 @@ export function SignInButton() {
     };
 
     const signOutRedirect = () => {
-        signOut('spotify', { callbackUrl: 'http://localhost:3000/' })
+        signOut( { callbackUrl: 'http://localhost:3000/' })
     };
 
    
-    // useEffect(() => {
-    //     console.log('signin button effect')
-    //     if(!session) {
-    //         console.log('routing to home')
-    //         router.replace('/')
-    //     } 
+    useEffect(() => {
+     
+        if(!session) {
+            router.replace('/')
+        } else if(router.pathname === '/') {  
+            router.replace('/collection')
+        }
         
-    // }, []);
+    }, [session]);
 
+    
 
             
     return session ? (
