@@ -1,10 +1,8 @@
-
 import '../styles/global.scss';
 
-import {Header} from '../components/Header'
+import { Provider as NextAuthProvider } from 'next-auth/client';
+import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { Provider as NextAuthProvider} from 'next-auth/client';
-
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,7 +11,7 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       <Footer />
     </NextAuthProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
