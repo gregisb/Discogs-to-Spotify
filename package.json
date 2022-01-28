@@ -7,13 +7,14 @@
     "build": "next build",
     "start": "next start",
     "next-lint": "next lint",
-   
-
     "lint": "eslint ./src/components/** ./src/pages/** -c .eslintrc.json --ext js,jsx",
     "lint-fix": "eslint ./src/components/** ./src/pages/** -c .eslintrc.js --fix --ext js,jsx",
     "eslint-init": "eslint --init"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.3.1",
     "@types/node": "^16.10.1",
     "@types/react": "^17.0.24",
     "axios": "^0.22.0",

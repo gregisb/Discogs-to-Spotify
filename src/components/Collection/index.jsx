@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import Switch from '@mui/material/Switch';
 
-import { BsSearch } from 'react-icons/bs';
 import styles from './home.module.scss';
 
 const axios = require('axios');
@@ -39,6 +39,17 @@ function Collection() {
     getAlbuns();
   };
 
+  console.log(albuns);
+
+  const [checked, setChecked] = useState([{ ...albuns.albumTitle }]);
+
+  const switchHandler = () => {
+    // setChecked([...checked, { albuns.albumTitle.key="value" }]);
+  };
+  console.log('ALBUNS');
+  console.log(albuns);
+  console.log(checked);
+
   return (
     <>
       <div className={styles.container}>
@@ -53,18 +64,19 @@ function Collection() {
         {Object.keys(albuns).map((albumTitle, index) => (
           <div key={index}>
             <div className={styles.album}>
-              <input type="checkbox" checked />
               <p>
                 {albumTitle}
               </p>
+              <Switch />
+
             </div>
             <ol>
               {albuns[albumTitle].map((track, index2) => (
                 <div className={styles.songs}>
-                  <li key={index2}>{track.title}</li>
-                  <label className={styles.switch}>
-                    <input type="checkbox" checked />
-                  </label>
+                  <li key={index2}>
+                    {track.title}
+                    <Switch checked={checked} onChange={switchHandler} size="small" />
+                  </li>
                 </div>
               ))}
             </ol>
