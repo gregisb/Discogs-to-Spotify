@@ -48,4 +48,20 @@
             filter: brightness(0.7)
         }
     }
+
+    
 }
+
+.album {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.songs {
+    // list-style: upper-alpha;
+    display: flex;
+    align-items: center;
+    margin-right: 1px;
+}
+

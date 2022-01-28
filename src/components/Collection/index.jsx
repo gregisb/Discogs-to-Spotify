@@ -28,6 +28,7 @@ function Collection() {
           tempAlbuns[album.data.title] = album.data.tracklist;
         }
         setAlbuns(tempAlbuns);
+        console.log(tempAlbuns);
 
         return data;
       } catch (error) {
@@ -51,13 +52,22 @@ function Collection() {
       <div>
         {Object.keys(albuns).map((albumTitle, index) => (
           <div key={index}>
-            <p>
-              {albumTitle}
-            </p>
-
-            <ul>
-              {albuns[albumTitle].map((track, index2) => <li key={index2}>{track.title}</li>)}
-            </ul>
+            <div className={styles.album}>
+              <input type="checkbox" checked />
+              <p>
+                {albumTitle}
+              </p>
+            </div>
+            <ol>
+              {albuns[albumTitle].map((track, index2) => (
+                <div className={styles.songs}>
+                  <li key={index2}>{track.title}</li>
+                  <label className={styles.switch}>
+                    <input type="checkbox" checked />
+                  </label>
+                </div>
+              ))}
+            </ol>
           </div>
         ))}
       </div>

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 import styles from './home.module.scss';
 
@@ -15,7 +15,7 @@ export default function About() {
         <section className={styles.hero}>
           <h1>
             Export your Discogs collection to a new
-            <span>Spotify</span>
+            <span> Spotify</span>
             {' '}
             playlist
           </h1>

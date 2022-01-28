@@ -14,14 +14,14 @@ export default function Home() {
         <section className={styles.hero}>
           <h1>
             Discogs to
-            <span>Spotify</span>
+            <span> Spotify</span>
           </h1>
           <p>
             Your
             <span style={{ color: 'white' }}> Discogs</span>
             {' '}
             collections on
-            <span>Spotify</span>
+            <span> Spotify</span>
             .
           </p>
           <SignInButton />
