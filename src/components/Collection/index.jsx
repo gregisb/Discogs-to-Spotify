@@ -5,7 +5,7 @@ import styles from './home.module.scss';
 
 const axios = require('axios');
 
-function Collection() {
+function CollectionPreviwer() {
   const [url, setUrl] = useState('');
   const [albuns, setAlbuns] = useState({});
 
@@ -28,26 +28,31 @@ function Collection() {
           tempAlbuns[album.data.title] = album.data.tracklist;
         }
         setAlbuns(tempAlbuns);
-        console.log(tempAlbuns);
 
         return data;
       } catch (error) {
         console.log(error);
       }
+      return null;
     };
 
     getAlbuns();
   };
 
-  console.log(albuns);
+  const [checked, setChecked] = useState([]);
 
-  const [checked, setChecked] = useState([{ ...albuns.albumTitle }]);
+  const handleToggle = (value) => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
 
-  const switchHandler = () => {
-    // setChecked([...checked, { albuns.albumTitle.key="value" }]);
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
   };
-  console.log('ALBUNS');
-  console.log(albuns);
   console.log(checked);
 
   return (
@@ -56,36 +61,41 @@ function Collection() {
         <form>
           <label className={styles.label}>Link your Discogs collection</label>
           <input onChange={(e) => setUrl(e.target.value)} value={url} type="text" />
-          <button onClick={onSubmit}>Import list</button>
+          <button type="button" onClick={onSubmit}>Import list</button>
         </form>
       </div>
 
       <div>
-        {Object.keys(albuns).map((albumTitle, index) => (
-          <div key={index}>
+        {Object.keys(albuns).map((albumTitle) => (
+          <div key={albumTitle}>
             <div className={styles.album}>
               <p>
                 {albumTitle}
               </p>
-              <Switch />
 
             </div>
             <ol>
-              {albuns[albumTitle].map((track, index2) => (
+              {albuns[albumTitle].map((track) => (
                 <div className={styles.songs}>
-                  <li key={index2}>
+                  <li key={track.title} track={track.title}>
                     {track.title}
-                    <Switch checked={checked} onChange={switchHandler} size="small" />
+                    <Switch
+                      onChange={() => handleToggle(albumTitle + track.title)}
+                      checked={!checked.includes(albumTitle + track.title)}
+                      size="small"
+                    />
                   </li>
                 </div>
               ))}
             </ol>
+
           </div>
         ))}
+        <button type="button" onClick={onSubmit}>Generate a playlist</button>
       </div>
 
     </>
   );
 }
 
-export default Collection;
+export default CollectionPreviwer;

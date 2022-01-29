@@ -18,8 +18,12 @@ module.exports = {
     'react',
   ],
   rules: {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prop-types": "off",
-        "react/react-in-jsx-scope": "off"
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'no-plusplus': 'off',
+    'no-await-in-loop': 'off',
+    'no-unused-vars': [1, { argsIgnorePattern: '^_' }],
+    'import/prefer-default-export': 'off',
   },
 };

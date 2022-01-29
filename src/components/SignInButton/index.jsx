@@ -22,12 +22,12 @@ export function SignInButton() {
   };
 
   useEffect(() => {
-    if (!session) {
+    if (!session && !loading) {
       router.replace('/');
     } else if (router.pathname === '/') {
       router.replace('/collection');
     }
-  }, [session]);
+  }, [session, loading]);
 
   return session ? (
     <button

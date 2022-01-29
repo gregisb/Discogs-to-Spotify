@@ -3,23 +3,25 @@ import Head from 'next/head';
 
 import styles from './home.module.scss';
 
-import CollectionPreviwer from '../../components/Collection';
+import Playlists from '../../components/Playlist';
 
-export default function Collections() {
+export default function About() {
   return (
     <>
       <Head>
-        <title>Collection | Discogs to Spotify</title>
+        <title>Playlists | Discogs to Spotify</title>
       </Head>
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
           <h1>
-            Export your Discogs collection to a new
-            <span> Spotify</span>
+            Your
             {' '}
-            playlist
+            <span>Spotify</span>
+            {' '}
+            playlists
+
           </h1>
-          <CollectionPreviwer />
+          <Playlists />
         </section>
 
         <img src="/images/vinyl.png" alt="Discogs to spotify" />
