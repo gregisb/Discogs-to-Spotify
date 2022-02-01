@@ -1,12 +1,16 @@
-import React from 'react'
-import styles from './home.module.scss'
+import React, { useContext } from 'react';
+import { ListContext, ListContextProvider } from '../../../context';
+import styles from './home.module.scss';
 
-const Playlist = () => {
-    return (
-        <div>
-            <h1>teste</h1>
-        </div>
-    )
+function Playlist() {
+  const {test} = useContext(ListContext);
+  console.log('playlist', test);
+
+  return (
+    <div>
+      <h1>{test}</h1>
+    </div>
+  );
 }
 
 export default Playlist;
