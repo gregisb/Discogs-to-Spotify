@@ -24,7 +24,7 @@ export function SignInButton() {
   useEffect(() => {
     if (!session && !loading) {
       router.replace('/');
-    } else if (router.pathname === '/') {
+    } else if (session && router.pathname === '/') {
       router.replace('/collection');
     }
   }, [session, loading]);
