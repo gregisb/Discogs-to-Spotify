@@ -39,7 +39,7 @@ export function ListContextProvider({ children }) {
   };
 
   const [checked, setChecked] = useState([]);
-  const checkMemo = useMemo(() => [checked], [checked]);
+  // const checkMemo = useMemo(() => [checked], [checked]);
 
   const handleToggle = (value) => {
     const currentIndex = checked.indexOf(value);
@@ -53,12 +53,11 @@ export function ListContextProvider({ children }) {
 
     setChecked(newChecked);
   };
-  console.log(checked);
 
   return (
     <ListContext.Provider
       value={{
-        checkMemo,
+        // checkMemo,
         url,
         setUrl,
         albuns,

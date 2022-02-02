@@ -7,13 +7,13 @@ import { ListContext, ListContextProvider } from '../../context';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <NextAuthProvider session={pageProps.session}>
-      <Header />
-      <ListContextProvider>
+    <ListContextProvider>
+      <NextAuthProvider session={pageProps.session}>
+        <Header />
         <Component {...pageProps} />
-      </ListContextProvider>
-      <Footer />
-    </NextAuthProvider>
+        <Footer />
+      </NextAuthProvider>
+    </ListContextProvider>
   );
 }
 

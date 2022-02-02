@@ -3,12 +3,13 @@ import { ListContext, ListContextProvider } from '../../../context';
 import styles from './home.module.scss';
 
 function Playlist() {
-  const { checkMemo, setChecked } = useContext(ListContext);
-  console.log('playlist', checkMemo);
+  const { checked, albuns} = useContext(ListContext);
+  console.log('checked', checked);
+  console.log('albuns', albuns);
 
   return (
     <div>
-      <h1>{checkMemo}</h1>
+      <h1>{albuns}</h1>
     </div>
   );
 }

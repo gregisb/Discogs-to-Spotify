@@ -1,6 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
+
 import Switch from '@mui/material/Switch';
 
+import { useRouter } from 'next/router';
 import styles from './home.module.scss';
 
 import { ListContext } from '../../../context';
@@ -16,6 +18,13 @@ function CollectionPreviwer() {
     setChecked,
     handleToggle,
   } = useContext(ListContext);
+
+  const router = useRouter();
+
+  const handlePlaylistGeneration = (e) => {
+    e.preventDefault();
+    router.push('/playlists');
+  };
 
   return (
     <>
@@ -42,8 +51,8 @@ function CollectionPreviwer() {
                   <li key={track.title} track={track.title}>
                     {track.title}
                     <Switch
-                      onChange={() => handleToggle(albumTitle + track.title)}
-                      checked={!checked.includes(albumTitle + track.title)}
+                      onChange={() => handleToggle(`${track.title}`)}
+                      checked={!checked.includes(`${track.title}`)}
                       size="small"
                     />
                   </li>
@@ -53,7 +62,7 @@ function CollectionPreviwer() {
 
           </div>
         ))}
-        <button type="button" onClick={onSubmit}>Generate a playlist</button>
+        <button type="button" onClick={handlePlaylistGeneration}>Generate a playlist</button>
       </div>
 
     </>
