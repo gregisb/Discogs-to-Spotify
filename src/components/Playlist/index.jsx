@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { ListContext, ListContextProvider } from '../../../context';
 import styles from './home.module.scss';
 
 function Playlist() {
-  const {checked} = useContext(ListContext);
-  console.log('playlist', checked);
+  const { checkMemo, setChecked } = useContext(ListContext);
+  console.log('playlist', checkMemo);
 
   return (
     <div>
-      <h1>{checked}</h1>
+      <h1>{checkMemo}</h1>
     </div>
   );
 }

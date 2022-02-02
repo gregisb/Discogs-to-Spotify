@@ -5,8 +5,6 @@ import styles from './home.module.scss';
 
 import { ListContext } from '../../../context';
 
-const axios = require('axios');
-
 function CollectionPreviwer() {
   const {
     url,
@@ -15,6 +13,7 @@ function CollectionPreviwer() {
     discogsUrl,
     onSubmit,
     checked,
+    setChecked,
     handleToggle,
   } = useContext(ListContext);
 

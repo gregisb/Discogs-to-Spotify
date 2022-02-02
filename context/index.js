@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useMemo } from 'react';
 
 const axios = require('axios');
 
@@ -39,6 +39,7 @@ export function ListContextProvider({ children }) {
   };
 
   const [checked, setChecked] = useState([]);
+  const checkMemo = useMemo(() => [checked], [checked]);
 
   const handleToggle = (value) => {
     const currentIndex = checked.indexOf(value);
@@ -55,15 +56,18 @@ export function ListContextProvider({ children }) {
   console.log(checked);
 
   return (
-    <ListContext.Provider value={{
-      url,
-      setUrl,
-      albuns,
-      discogsUrl,
-      onSubmit,
-      checked,
-      handleToggle,
-    }}
+    <ListContext.Provider
+      value={{
+        checkMemo,
+        url,
+        setUrl,
+        albuns,
+        discogsUrl,
+        onSubmit,
+        checked,
+        setChecked,
+        handleToggle,
+      }}
     >
       {children}
 
