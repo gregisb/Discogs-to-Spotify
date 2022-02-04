@@ -38,6 +38,8 @@ export function ListContextProvider({ children }) {
     getAlbuns();
   };
 
+  let tracksArray = [];
+
   const [checked, setChecked] = useState([]);
   // const checkMemo = useMemo(() => [checked], [checked]);
 
@@ -66,6 +68,7 @@ export function ListContextProvider({ children }) {
         checked,
         setChecked,
         handleToggle,
+        tracksArray,
       }}
     >
       {children}

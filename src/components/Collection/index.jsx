@@ -17,6 +17,7 @@ function CollectionPreviwer() {
     checked,
     setChecked,
     handleToggle,
+    tracksArray,
   } = useContext(ListContext);
 
   const router = useRouter();
@@ -48,6 +49,7 @@ function CollectionPreviwer() {
             <ol>
               {albuns[albumTitle].map((track) => (
                 <div className={styles.songs}>
+                  {tracksArray.push(track.title)}
                   <li key={track.title} track={track.title}>
                     {track.title}
                     <Switch
