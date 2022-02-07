@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Switch from '@mui/material/Switch';
 
@@ -7,26 +7,75 @@ import styles from './home.module.scss';
 
 import { ListContext } from '../../../context';
 
-function CollectionPreviwer() {
+const axios = require('axios');
+
+export default function CollectionPreviwer() {
   const {
-    url,
-    setUrl,
-    albuns,
-    discogsUrl,
-    onSubmit,
-    checked,
-    setChecked,
-    handleToggle,
-    tracksArray,
+    setFilteredAlbuns,
   } = useContext(ListContext);
+
+  const [url, setUrl] = useState('');
+  const [albuns, setAlbuns] = useState({});
+
+  const discogsUrl = 'https://api.discogs.com';
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const listId = url.split('/').pop();
+
+    const tempAlbuns = [];
+
+    const getAlbuns = async () => {
+      try {
+        const resp = await axios.get(`${discogsUrl}/lists/${listId}`);
+        const data = resp.data.items;
+
+        for (let i = 0; i < data.length; i++) {
+          const album = await axios.get(data[i].resource_url);
+          tempAlbuns[album.data.title] = album.data.tracklist;
+        }
+        setAlbuns(tempAlbuns);
+
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+      return null;
+    };
+
+    getAlbuns();
+  };
+
+  const tracksArray = [];
+
+  const [discarted, setdiscarted] = useState([]);
+
+  const handleToggle = (value) => {
+    const currentIndex = discarted.indexOf(value);
+    const newdiscarted = [...discarted];
+
+    if (currentIndex === -1) {
+      newdiscarted.push(value);
+    } else {
+      newdiscarted.splice(currentIndex, 1);
+    }
+
+    setdiscarted(newdiscarted);
+  };
 
   const router = useRouter();
 
   const handlePlaylistGeneration = (e) => {
     e.preventDefault();
-    router.push('/playlists');
+    const results = {};
+    Object.keys(albuns).forEach((album) => {
+      results[album] = albuns[album].filter((track) => !discarted.includes(track.title));
+      setFilteredAlbuns(results);
+      console.log('collection', results);
+      router.push('/playlists');
+    });
   };
-
   return (
     <>
       <div className={styles.container}>
@@ -46,21 +95,22 @@ function CollectionPreviwer() {
               </p>
 
             </div>
-            <ol>
+            <ul>
               {albuns[albumTitle].map((track) => (
                 <div className={styles.songs}>
                   {tracksArray.push(track.title)}
                   <li key={track.title} track={track.title}>
+
                     {track.title}
                     <Switch
                       onChange={() => handleToggle(`${track.title}`)}
-                      checked={!checked.includes(`${track.title}`)}
+                      checked={!discarted.includes(`${track.title}`)}
                       size="small"
                     />
                   </li>
                 </div>
               ))}
-            </ol>
+            </ul>
 
           </div>
         ))}
@@ -70,5 +120,3 @@ function CollectionPreviwer() {
     </>
   );
 }
-
-export default CollectionPreviwer;

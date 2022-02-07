@@ -1,61 +1,37 @@
 import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import { ListContext, ListContextProvider } from '../../../context';
 import styles from './home.module.scss';
 
 function Playlist() {
-  const { checked, albuns, tracksArray } = useContext(ListContext);
-  console.log('checked', checked);
-  // console.log('albuns', albuns);
-  // console.log('tracksArray', tracksArray);
+  const { filteredAlbuns } = useContext(ListContext);
+  console.log('playlists', filteredAlbuns);
 
-  const arrOfTracks = [];
+  function onSubmit(e) {
+    e.preventDefault();
 
-  function tracksArr() {
-    Object.keys(albuns).map((albumTitle) => {
-      console.log('tracksArr', albumTitle);
-      albuns[albumTitle].map((track) => {
-        arrOfTracks.push(track.title);
-      });
-    });
-    return arrOfTracks;
+    // buscar as músicas no spotify utilizando nome da track + nome do album;
+
+    // selecionar a principal faixa correspondente de cada música;
+    // criar um objeto com as faixas selecionadas
+    // criar uma nova playlist
+    // popular a playlist com os dados
   }
-  tracksArr();
-  console.log('ARROFTRACKS', arrOfTracks);
-
-  let filteredSongs = [];
-  filteredSongs = arrOfTracks.filter((currentSong) => !checked.includes(currentSong));
-  console.log('filteredSongsDENTRO ', filteredSongs);
-  console.log(`tipo${typeof filteredSongs}`);
-
-  console.log('filteredSongsFORA ', filteredSongs);
 
   return (
-    <div>
-      {Object.keys(albuns).map((albumTitle) => (
-        <div key={albumTitle}>
-          <div className={styles.album}>
-            <p>
-              {albumTitle}
+    <div />
 
-              {/* {filter()} */}
-            </p>
+  // <form>
+  //   <label>Give your playlist a name: </label>
+  //   <input
+  //     type="text"
+  //     onChange={(e) => setPlaylistTitle(e.target.value)}
+  //     value={playlistTitle}
+  //   />
+  //   <button type="button" onClick={onSubmit}>Create new playlist</button>
 
-          </div>
-
-          <ol>
-            {filteredSongs.map((track) => (
-              <div className={styles.songs}>
-                <li key={track} track={track}>
-                  {track}
-
-                </li>
-              </div>
-            ))}
-          </ol>
-
-        </div>
-      ))}
-    </div>
+  // </form>
+  // </div>
   );
 }
 
