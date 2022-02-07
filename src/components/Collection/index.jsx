@@ -71,10 +71,10 @@ export default function CollectionPreviwer() {
     const results = {};
     Object.keys(albuns).forEach((album) => {
       results[album] = albuns[album].filter((track) => !discarted.includes(track.title));
-      setFilteredAlbuns(results);
-      console.log('collection', results);
-      router.push('/playlists');
     });
+    setFilteredAlbuns(results);
+    console.log('collection', results);
+    router.push('/playlists');
   };
   return (
     <>
