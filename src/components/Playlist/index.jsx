@@ -33,9 +33,10 @@ function Playlist() {
           </ol>
         ))}
       </div>
-      <form label className={styles.label}>
-        <label>Give your playlist a name: </label>
+      <form>
+        <label className={styles.label}>Give your playlist a name: </label>
         <input
+          id="text"
           type="text"
           onChange={(e) => setPlaylistTitle(e.target.value)}
           value={playlistTitle}
