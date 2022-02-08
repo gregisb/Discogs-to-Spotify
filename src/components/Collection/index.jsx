@@ -88,7 +88,13 @@ export default function CollectionPreviwer() {
         </p>
         <form>
           <label className={styles.label}>Link your Discogs collection</label>
-          <input onChange={(e) => setUrl(e.target.value)} value={url} type="text" placeholder="Place here the link to your Discogs list" />
+          <input
+            onChange={(e) => setUrl(e.target.value)}
+            value={url}
+            type="text"
+            placeholder="Place here the link to your Discogs list"
+            autoComplete="off"
+          />
           <button type="button" onClick={onSubmit}>Import list</button>
         </form>
       </div>

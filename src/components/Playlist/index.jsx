@@ -41,6 +41,7 @@ function Playlist() {
           onChange={(e) => setPlaylistTitle(e.target.value)}
           value={playlistTitle}
           placeholder="Playlist title"
+          autoComplete="off"
         />
         <button className={styles.generatebutton} type="button" onClick={onSubmit}>Create new playlist</button>
 
