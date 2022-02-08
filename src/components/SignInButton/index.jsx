@@ -2,7 +2,7 @@ import { FaSpotify } from 'react-icons/fa';
 import { FiX } from 'react-icons/fi';
 
 import {
-  signIn, signOut, useSession, getSession,
+  signIn, signOut, useSession, getSession, jwt,
 } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';

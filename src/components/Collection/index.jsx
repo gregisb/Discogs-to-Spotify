@@ -16,6 +16,7 @@ export default function CollectionPreviwer() {
 
   const [url, setUrl] = useState('');
   const [albuns, setAlbuns] = useState({});
+  const [enableButton, setEnableButton] = useState(false);
 
   const discogsUrl = 'https://api.discogs.com';
 
@@ -36,6 +37,7 @@ export default function CollectionPreviwer() {
           tempAlbuns[album.data.title] = album.data.tracklist;
         }
         setAlbuns(tempAlbuns);
+        setEnableButton(true);
 
         return data;
       } catch (error) {
@@ -78,10 +80,15 @@ export default function CollectionPreviwer() {
   };
   return (
     <>
+      <p>
+        Go to your Discogs lists and choose one to import.
+        You can use the following link as an example:
+        (https://www.discogs.com/lists/Eletr%C3%B4nica/941179)
+      </p>
       <div className={styles.container}>
         <form>
           <label className={styles.label}>Link your Discogs collection</label>
-          <input onChange={(e) => setUrl(e.target.value)} value={url} type="text" />
+          <input onChange={(e) => setUrl(e.target.value)} value={url} type="text" placeholder="Place here the link to your Discogs list" />
           <button type="button" onClick={onSubmit}>Import list</button>
         </form>
       </div>
@@ -114,7 +121,7 @@ export default function CollectionPreviwer() {
 
           </div>
         ))}
-        <button type="button" onClick={handlePlaylistGeneration}>Generate a playlist</button>
+        {enableButton ? <button className={styles.generatebutton} type="button" onClick={handlePlaylistGeneration}>Generate a playlist</button> : ''}
       </div>
 
     </>

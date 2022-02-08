@@ -14,11 +14,11 @@ export default function About() {
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
           <h1>
-            Your
+            Create a new
             {' '}
             <span>Spotify</span>
             {' '}
-            playlists
+            playlist
 
           </h1>
           <Playlists />

@@ -7,6 +7,8 @@ function Playlist() {
   const { filteredAlbuns } = useContext(ListContext);
   console.log('playlists', filteredAlbuns);
 
+  const [playlistTitle, setPlaylistTitle] = useState('');
+
   function onSubmit(e) {
     e.preventDefault();
 
@@ -19,19 +21,30 @@ function Playlist() {
   }
 
   return (
-    <div />
+    <div className={styles.container}>
+      <p>You've selected the following tracks to be add to the new playlist:</p>
+      <div className={styles.songs}>
+        {Object.keys(filteredAlbuns).map((albumTitle) => (
+          <ol>
+            {filteredAlbuns[albumTitle].map((filteredTracks) => (
+              <li>{filteredTracks.title}</li>
+            ))}
 
-  // <form>
-  //   <label>Give your playlist a name: </label>
-  //   <input
-  //     type="text"
-  //     onChange={(e) => setPlaylistTitle(e.target.value)}
-  //     value={playlistTitle}
-  //   />
-  //   <button type="button" onClick={onSubmit}>Create new playlist</button>
+          </ol>
+        ))}
+      </div>
+      <form label className={styles.label}>
+        <label>Give your playlist a name: </label>
+        <input
+          type="text"
+          onChange={(e) => setPlaylistTitle(e.target.value)}
+          value={playlistTitle}
+          placeholder="Playlist title"
+        />
+        <button className={styles.generatebutton} type="button" onClick={onSubmit}>Create new playlist</button>
 
-  // </form>
-  // </div>
+      </form>
+    </div>
   );
 }
 
