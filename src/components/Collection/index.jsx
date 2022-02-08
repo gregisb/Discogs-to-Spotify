@@ -80,12 +80,12 @@ export default function CollectionPreviwer() {
   };
   return (
     <>
-      <p>
-        Go to your Discogs lists and choose one to import.
-        You can use the following link as an example:
-        (https://www.discogs.com/lists/Eletr%C3%B4nica/941179)
-      </p>
       <div className={styles.container}>
+        <p className={styles.paragraph}>
+          Go to your Discogs lists and choose one to import.
+          You can use the following link as an example:
+          (https://www.discogs.com/lists/Eletr%C3%B4nica/941179)
+        </p>
         <form>
           <label className={styles.label}>Link your Discogs collection</label>
           <input onChange={(e) => setUrl(e.target.value)} value={url} type="text" placeholder="Place here the link to your Discogs list" />

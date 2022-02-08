@@ -2,7 +2,7 @@
   margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column-reverse;
+  flex-direction: column;
 
   .label {
     display: flex;
@@ -49,6 +49,13 @@
       filter: brightness(0.7);
     }
   }
+
+
+  .paragraph {
+    font-size: 20px;
+    margin-top: -8px;
+    margin-bottom: 20px;
+  }
 }
 
 .album {
@@ -80,7 +87,8 @@
 
     transition: ease .5s;
 
-    &:hover {
-      filter: brightness(0.7);
-    }
-  }
+  &:hover {
+    filter: brightness(0.7);
+  } 
+}
+
