@@ -10,7 +10,34 @@
 
     img{
         width: 30vw;
+        max-width: 600px;
         opacity: .7;
+    }
+
+    @media (max-width: 768px) {
+        
+        img {
+            min-width: 300px;
+        }
+    }
+
+    @media (max-width: 425px) {
+        padding-top: 36px;
+        flex-direction: column;
+        justify-content: normal;
+        align-items: center;
+
+        img {
+            margin-top: 10px;
+            min-width: 220px;
+            order: -1;
+        }
+    }
+
+    @media (max-width: 320px) {
+        justify-content: center;
+        align-items: center
+
     }
 }
 
