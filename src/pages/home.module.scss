@@ -34,10 +34,21 @@
         }
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 375px) {
         justify-content: center;
-        align-items: center
+        align-items: center;
+        height: calc(100vh - 10rem);
+        border: 1px solid blue;
 
+        font-size: 0.75;
+
+
+        img {
+            // margin-top: 100px;
+            // min-width: 200px;
+            // order: -1;
+            display: none;
+        }
     }
 }
 
