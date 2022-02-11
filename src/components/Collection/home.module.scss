@@ -56,7 +56,7 @@
   .paragraph {
     font-size: 20px;
     margin-top: -8px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 }
 
@@ -91,6 +91,36 @@
 
   &:hover {
     filter: brightness(0.7);
-  } 
+  }
+ 
+}
+
+.clipboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: var(--white);
+  background-color: var(--gray-800);
+
+  border-radius: 8px;
+
+  height: 5vh;
+
+  margin: 0;
+  padding: 0;
+  max-width: 75%;
+  // padding: 8px;
+  margin-bottom: 25px;
+
+  p {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    font-size: .85rem;
+  }
+
+  svg {
+    cursor: pointer
+  }
 }
 

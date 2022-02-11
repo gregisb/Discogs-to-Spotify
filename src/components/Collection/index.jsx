@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 
+import { AiOutlineCopy } from 'react-icons/ai';
+
 import Switch from '@mui/material/Switch';
 
 import { useRouter } from 'next/router';
@@ -84,8 +86,11 @@ export default function CollectionPreviwer() {
         <p className={styles.paragraph}>
           Go to your Discogs lists and choose one to import.
           You can use the following link as an example:
-          (https://www.discogs.com/lists/Eletr%C3%B4nica/941179)
         </p>
+        <div className={styles.clipboard}>
+          <p>https://www.discogs.com/lists/Eletr%C3%B4nica/941179</p>
+          <AiOutlineCopy />
+        </div>
         <form>
           <label className={styles.label}>Link your Discogs collection</label>
           <input
