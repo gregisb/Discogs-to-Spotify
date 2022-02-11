@@ -113,6 +113,7 @@
   margin-bottom: 25px;
 
   p {
+    color: var(--gray-300);
     display: flex;
     justify-content: space-evenly;
     margin: 0;
@@ -120,7 +121,15 @@
   }
 
   svg {
-    cursor: pointer
+    cursor: pointer;
+    transition: ease .6s;
+    color: var(--gray-100);
+    
+    &:hover {
+      color: var(--gray-300);
+
+      // background-color: var(--gray-900);
+    }
   }
 }
 

@@ -80,6 +80,10 @@ export default function CollectionPreviwer() {
     console.log('collection', results);
     router.push('/playlists');
   };
+
+  function handleCopyLink() {
+    setUrl('https://www.discogs.com/lists/Eletr%C3%B4nica/941179');
+  }
   return (
     <>
       <div className={styles.container}>
@@ -89,7 +93,7 @@ export default function CollectionPreviwer() {
         </p>
         <div className={styles.clipboard}>
           <p>https://www.discogs.com/lists/Eletr%C3%B4nica/941179</p>
-          <AiOutlineCopy />
+          <AiOutlineCopy onClick={handleCopyLink}/>
         </div>
         <form>
           <label className={styles.label}>Link your Discogs collection</label>
