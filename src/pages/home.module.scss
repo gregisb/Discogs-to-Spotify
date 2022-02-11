@@ -1,7 +1,8 @@
 .contentContainer {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    // max-width: 1120px;
+    // margin: 0 auto;
+    // padding: 0 2rem;
+    padding: 0 7% 0 7%;
     height: calc(100vh - 7rem);
 
     display: flex;
@@ -87,7 +88,7 @@
     button {
         margin-top: 2.5rem;
         width: 80%;
-        font-size: 1.5rem;
-        
+        font-size: 1rem;
+        font-weight: bold;
     }
 }

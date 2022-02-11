@@ -36,7 +36,7 @@ export function SignInButton() {
       onClick={signOutRedirect}
     >
       <FaSpotify color="white" />
-      {session.user.name}
+      <span className={styles.signinButtonText}>{session.user.name}</span>
       <FiX color="#737380" className={styles.closeIcon} />
     </button>
   ) : (
@@ -46,7 +46,7 @@ export function SignInButton() {
       onClick={signInRedirect}
     >
       <FaSpotify color="#white" />
-      Sign in with Spotify
+      <span className={styles.signinButtonText}>Sign in with Spotify</span>
     </button>
   );
 }

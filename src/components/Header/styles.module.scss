@@ -1,29 +1,44 @@
 .headerContainer {
     height: 5rem;
     border-bottom: 1px solid var(--gray-800);
-    border: 1px solid green;
 }
 
 .headerContent {
-    max-width: 1120px;
     height: 5rem;
-    margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 7% 0 7%;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
+    // justify-content: space-between;
+    // flex-wrap: nowrap;
+    gap: 50px;
 
-    border: 1px solid yellow;
+    @media (max-width: 575px) {
+        h2 {
+            display: none;
+        }
+    }
+
+    @media (max-width: 445px) {
+        button {
+            span {
+                display: none;
+            }
+
+            svg {
+                margin: 0 !important;
+            }
+        }
+    }
 
     nav {
-        margin-left: 5rem;
-        height: 5rem;
+        // margin-left: 5rem;
+        // height: 5rem;
+        flex-grow: 1;
 
         a {
-            display: inline-block;
-            position: relative;
+            // display: inline-block;
+            // position: relative;
             padding: 0 .5rem;
             height: 5rem;
             line-height: 5rem;
@@ -58,7 +73,7 @@
     }
 
     > button {
-        margin-left: auto
+        // margin-left: auto
     }
 
     @media (max-width: 375px) {
