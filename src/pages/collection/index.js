@@ -21,8 +21,10 @@ export default function Collections() {
           </h1>
           <CollectionPreviwer />
         </section>
+        <div>
+          <img src="/images/vinyl.png" alt="Discogs to spotify" />
+        </div>
 
-        <img src="/images/vinyl.png" alt="Discogs to spotify" />
       </main>
     </>
   );

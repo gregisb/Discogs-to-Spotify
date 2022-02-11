@@ -96,6 +96,8 @@
 }
 
 .clipboard {
+  border: 1px solid var(--gray-300);
+
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -108,7 +110,7 @@
 
   margin: 0;
   padding: 0;
-  max-width: 75%;
+  max-width: 80%;
   // padding: 8px;
   margin-bottom: 25px;
 
