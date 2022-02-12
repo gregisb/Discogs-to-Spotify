@@ -22,7 +22,6 @@ export default function Collections() {
           <CollectionPreviwer />
         </section>
 
-
       </main>
       <img src="/images/vinyl.png" alt="Discogs to spotify" />
     </section>

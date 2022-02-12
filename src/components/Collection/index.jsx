@@ -1,4 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, {
+  useContext, useState, useEffect, useRef,
+} from 'react';
 
 import { AiOutlineCopy } from 'react-icons/ai';
 
@@ -19,6 +21,8 @@ export default function CollectionPreviwer() {
   const [url, setUrl] = useState('');
   const [albuns, setAlbuns] = useState({});
   const [enableButton, setEnableButton] = useState(false);
+
+  const scrollRef = useRef(null);
 
   const discogsUrl = 'https://api.discogs.com';
 
@@ -45,6 +49,7 @@ export default function CollectionPreviwer() {
       } catch (error) {
         console.log(error);
       }
+
       return null;
     };
 
@@ -81,6 +86,11 @@ export default function CollectionPreviwer() {
     router.push('/playlists');
   };
 
+  useEffect(() => {
+    scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    // window.scrollTo({ top: scrollRef.current.scrollIntoView, behavior: 'smooth' });
+  }, [albuns]);
+
   return (
     <>
       <div className={styles.container}>
@@ -90,7 +100,7 @@ export default function CollectionPreviwer() {
         </p>
         <div className={styles.clipboard}>
           <p>https://www.discogs.com/lists/Eletr%C3%B4nica/941179</p>
-          <AiOutlineCopy onClick={() => setUrl('https://www.discogs.com/lists/Eletr%C3%B4nica/941179')}/>
+          <AiOutlineCopy onClick={() => setUrl('https://www.discogs.com/lists/Eletr%C3%B4nica/941179')} />
         </div>
         <form>
           <label className={styles.label}>Link your Discogs list:</label>
@@ -102,12 +112,13 @@ export default function CollectionPreviwer() {
             autoComplete="off"
           />
           <button type="button" onClick={onSubmit}>Import list</button>
+
         </form>
       </div>
 
-      <div>
+      <div ref={scrollRef}>
         {Object.keys(albuns).map((albumTitle) => (
-          <div key={albumTitle}>
+          <div className="album1" key={albumTitle}>
             <div className={styles.album}>
               <p>
                 {albumTitle}
