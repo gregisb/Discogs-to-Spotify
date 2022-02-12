@@ -25,12 +25,13 @@ function Playlist() {
       <p>You've selected the following tracks to be add to the new playlist:</p>
       <div className={styles.songs}>
         {Object.keys(filteredAlbuns).map((albumTitle) => (
-          <ol>
+
+          <ul>
             {filteredAlbuns[albumTitle].map((filteredTracks) => (
               <li>{filteredTracks.title}</li>
             ))}
 
-          </ol>
+          </ul>
         ))}
       </div>
       <form>

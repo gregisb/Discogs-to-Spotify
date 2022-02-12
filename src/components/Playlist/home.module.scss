@@ -33,11 +33,20 @@
 
 .songs {
     display: flex;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 20px;
+
+    flex-wrap: wrap;
+
     margin-left: 20px;
-    margin-right: 1px;
+    // margin-right: 1px;
     margin-top: 20px;
     margin-bottom: 30px;
+
+    ul {
+      margin-left: 16px;
+    }
 }
 
 .generatebutton {
@@ -46,6 +55,7 @@
     background: var(--green-500);
     border: 0;
     padding: 0 1.5rem;
+    margin-bottom: 20px;
 
     display: flex;
     align-items: center;
