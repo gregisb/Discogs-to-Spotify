@@ -7,7 +7,7 @@ import CollectionPreviwer from '../../components/Collection';
 
 export default function Collections() {
   return (
-    <>
+    <section className={styles.section}>
       <Head>
         <title>Collection | Discogs to Spotify</title>
       </Head>
@@ -21,11 +21,10 @@ export default function Collections() {
           </h1>
           <CollectionPreviwer />
         </section>
-        <div>
-          <img src="/images/vinyl.png" alt="Discogs to spotify" />
-        </div>
+
 
       </main>
-    </>
+      <img src="/images/vinyl.png" alt="Discogs to spotify" />
+    </section>
   );
 }
