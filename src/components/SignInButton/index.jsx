@@ -2,14 +2,17 @@ import { FaSpotify } from 'react-icons/fa';
 import { FiX } from 'react-icons/fi';
 
 import {
-  signIn, signOut, useSession, getSession, jwt,
-} from 'next-auth/client';
+
+  signIn, signOut, useSession,
+} from 'next-auth/react';
+
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import styles from './styles.module.scss';
 
 export function SignInButton() {
-  const [session, loading] = useSession();
+  const { data: session, status } = useSession();
+  const loading = status === 'loading';
 
   const router = useRouter();
 

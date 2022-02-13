@@ -1,14 +1,14 @@
 import '../styles/global.scss';
 
-import { Provider as NextAuthProvider } from 'next-auth/client';
+import { SessionProvider as NextAuthProvider } from 'next-auth/react';
 import { Header } from '../components/Header';
 import Footer from '../components/Footer';
 import { ListContext, ListContextProvider } from '../../context';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <ListContextProvider>
-      <NextAuthProvider session={pageProps.session}>
+      <NextAuthProvider session={session}>
         <Header />
         <Component {...pageProps} />
         <Footer />
