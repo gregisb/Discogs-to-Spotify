@@ -25,5 +25,6 @@ module.exports = {
     'no-await-in-loop': 'off',
     'no-unused-vars': [1, { argsIgnorePattern: '^_' }],
     'import/prefer-default-export': 'off',
+    'no-param-reassign': 'off',
   },
 };

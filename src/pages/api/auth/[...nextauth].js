@@ -34,38 +34,49 @@ const options = {
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID,
       clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-
-      params: {
-        grant_type: 'authorization_code',
-      },
-      callbacks: {
-        async signIn({
-          user, account, profile, email, credentials,
-        }) {
-          return true;
-        },
-        async redirect({ url, baseUrl }) {
-          return baseUrl;
-        },
-        async session({ session, user, token }) {
-          return session;
-        },
-        async jwt({
-          token, user, account, profile, isNewUser,
-        }) {
-          return token;
-        },
-      },
-      profile(profile) {
-        return {
-          id: profile.id,
-          name: profile.display_name,
-          email: profile.email,
-          image: profile.images?.[0]?.url,
-        };
-      },
+      authorization: LOGIN_URL,
     }),
   ],
+  params: {
+    grant_type: 'authorization_code',
+  },
+  callbacks: {
+    async session({ session, user, token }) {
+      session.user = token.user;
+      session.accessToken = token.accessToken;
+      session.error = token.error;
+
+      return session;
+    },
+    async jwt({
+      token, user, account, profile, isNewUser,
+    }) {
+      if (account && user) {
+        return {
+          accessToken: account.access_token,
+          accessTokenExpires: Date.now() + account.expires_in * 1000,
+          refreshToken: account.refresh_token,
+          user,
+        };
+      }
+
+      // Return previous token if the access token has not expired yet
+      if (Date.now() < token.accessTokenExpires) {
+        return token;
+      }
+
+      // Access token has expired, try to update it
+      return refreshAccessToken(token);
+    },
+  },
+  profile(profile) {
+    return {
+      id: profile.id,
+      name: profile.display_name,
+      email: profile.email,
+      image: profile.images?.[0]?.url,
+    };
+  },
 };
 
 export default (req, res) => NextAuth(req, res, options);
