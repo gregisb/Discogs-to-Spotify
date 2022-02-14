@@ -35,15 +35,14 @@ export function SignInButton() {
     } else if (session) {
       console.log(session);
       spotifyApi.setAccessToken(session.accessToken);
-      // Get Elvis' albums
-      spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE').then(
-        (data) => {
-          console.log('Artist albums', data.body);
-        },
-        (err) => {
-          console.error(err);
-        },
-      );
+      // Search tracks whose albun's name contains 'To Pimp A Butterflyr',
+      // and track name contains 'Alright'
+      spotifyApi.searchTracks('track:Alright album:To Pimp A Butterfly')
+        .then((data) => {
+          console.log('Search tracks by "Alright" in the track name and "To Pimp A Butterfly" in the album name', data.body);
+        }, (err) => {
+          console.log('Something went wrong!', err);
+        });
     }
   }, [session, loading]);
 

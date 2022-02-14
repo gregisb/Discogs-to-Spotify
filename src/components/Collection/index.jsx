@@ -15,7 +15,7 @@ const axios = require('axios');
 
 export default function CollectionPreviwer() {
   const {
-    setFilteredAlbuns,
+    setFilteredAlbuns, filteredAlbuns,
   } = useContext(ListContext);
 
   const [url, setUrl] = useState('');
@@ -82,7 +82,18 @@ export default function CollectionPreviwer() {
       results[album] = albuns[album].filter((track) => !discarted.includes(track.title));
     });
     setFilteredAlbuns(results);
-    console.log('collection', results);
+    console.log('1 - collection results', results); //retorno com os dados esperados
+    console.log('2 - filteredAlbuns', filteredAlbuns); // retorna vazio na primeira vez, e retorna com os dados "processados" na segunda vez
+    Object.keys(filteredAlbuns).map((albumTitle) => {
+      let searchAlbumTitle = albumTitle;
+      console.log(searchAlbumTitle);
+
+      filteredAlbuns[albumTitle].map((searchFilteredTrack) => {
+        console.log('3 - FILTRO', searchFilteredTrack.title); // retorna vazio na primeira vez, e retorna com os dados "processados" na segunda vez
+        return searchFilteredTrack;
+      });
+      return searchAlbumTitle;
+    });
     router.push('/playlists');
   };
 
