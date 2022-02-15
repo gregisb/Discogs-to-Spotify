@@ -21,7 +21,7 @@ export default function CollectionPreviwer() {
   const loading = status === 'loading';
 
   const {
-    setFilteredAlbuns,
+    setFilteredAlbuns, setTrackUri,
   } = useContext(ListContext);
 
   const [url, setUrl] = useState('');
@@ -81,8 +81,7 @@ export default function CollectionPreviwer() {
 
   const router = useRouter();
 
-  const trackUri = [];
-  const notFound = [];
+  let collectionUris = [];
 
   const handlePlaylistGeneration = (e) => {
     e.preventDefault();
@@ -110,10 +109,11 @@ export default function CollectionPreviwer() {
               if (
                 searchFilteredTrack.title.toLowerCase() === myTracks[myTrack].name.toLowerCase()
                 && searchAlbumTitle.toLocaleLowerCase() === myTracks[myTrack].album.name.toLowerCase()) {
-                console.log('myTrack[myTrack].name', myTracks[myTrack].name.toLowerCase());
-                console.log('myTrack[myTrack].URI', myTracks[myTrack].uri);
-                console.log('myTrack[myTrack].ALBUM', myTracks[myTrack].album.name.toLowerCase());
-                trackUri.push(myTracks[myTrack].uri);
+                // console.log('myTrack[myTrack].name', myTracks[myTrack].name.toLowerCase());
+                // console.log('myTrack[myTrack].URI', myTracks[myTrack].uri);
+                // console.log('myTrack[myTrack].ALBUM', myTracks[myTrack].album.name.toLowerCase());
+                collectionUris.push(myTracks[myTrack].uri);
+                setTrackUri(collectionUris);
               } /* else {
                 notFound.push(searchFilteredTrack.title);
                 console.log('NÃO ADCIONADAS', notFound);
@@ -128,7 +128,6 @@ export default function CollectionPreviwer() {
       });
       return searchAlbumTitle;
     });
-    console.log('trackURI', trackUri);
 
     router.push('/playlists');
   };
