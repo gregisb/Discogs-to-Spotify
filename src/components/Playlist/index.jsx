@@ -5,7 +5,7 @@ import styles from './home.module.scss';
 
 function Playlist() {
   const { filteredAlbuns } = useContext(ListContext);
-  console.log('playlists', filteredAlbuns);
+  // console.log('playlists', filteredAlbuns);
 
   const [playlistTitle, setPlaylistTitle] = useState('');
 

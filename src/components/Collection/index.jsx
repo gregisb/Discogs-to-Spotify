@@ -7,6 +7,8 @@ import { AiOutlineCopy } from 'react-icons/ai';
 import Switch from '@mui/material/Switch';
 
 import { useRouter } from 'next/router';
+import SpotifyWebApi from 'spotify-web-api-node';
+import { useSession } from 'next-auth/react';
 import styles from './home.module.scss';
 
 import { ListContext } from '../../../context';
@@ -14,8 +16,12 @@ import { ListContext } from '../../../context';
 const axios = require('axios');
 
 export default function CollectionPreviwer() {
+  const spotifyApi = new SpotifyWebApi();
+  const { data: session, status } = useSession();
+  const loading = status === 'loading';
+
   const {
-    setFilteredAlbuns, filteredAlbuns,
+    setFilteredAlbuns,
   } = useContext(ListContext);
 
   const [url, setUrl] = useState('');
@@ -75,6 +81,9 @@ export default function CollectionPreviwer() {
 
   const router = useRouter();
 
+  const trackUri = [];
+  const notFound = [];
+
   const handlePlaylistGeneration = (e) => {
     e.preventDefault();
     const results = {};
@@ -82,18 +91,45 @@ export default function CollectionPreviwer() {
       results[album] = albuns[album].filter((track) => !discarted.includes(track.title));
     });
     setFilteredAlbuns(results);
-    console.log('1 - collection results', results); //retorno com os dados esperados
-    console.log('2 - filteredAlbuns', filteredAlbuns); // retorna vazio na primeira vez, e retorna com os dados "processados" na segunda vez
-    Object.keys(filteredAlbuns).map((albumTitle) => {
-      let searchAlbumTitle = albumTitle;
+
+    // console.log('1 - collection results', results);
+    // console.log('2 - filteredAlbuns', filteredAlbuns);
+    spotifyApi.setAccessToken(session.accessToken);
+    Object.keys(results).map((albumTitle) => {
+      const searchAlbumTitle = albumTitle;
       console.log(searchAlbumTitle);
 
-      filteredAlbuns[albumTitle].map((searchFilteredTrack) => {
-        console.log('3 - FILTRO', searchFilteredTrack.title); // retorna vazio na primeira vez, e retorna com os dados "processados" na segunda vez
+      results[albumTitle].map((searchFilteredTrack) => {
+        spotifyApi.searchTracks(`track:${searchFilteredTrack.title} album:${searchAlbumTitle}`)
+          .then((data) => {
+            // console.log(`Search tracks by "${searchFilteredTrack.title}" in the track name and "${searchAlbumTitle}" in the album name`, data.body);
+            const myTracks = data.body.tracks.items;
+            console.log('myTracks', myTracks);
+
+            Object.keys(myTracks).map((myTrack) => {
+              if (
+                searchFilteredTrack.title.toLowerCase() === myTracks[myTrack].name.toLowerCase()
+                && searchAlbumTitle.toLocaleLowerCase() === myTracks[myTrack].album.name.toLowerCase()) {
+                console.log('myTrack[myTrack].name', myTracks[myTrack].name.toLowerCase());
+                console.log('myTrack[myTrack].URI', myTracks[myTrack].uri);
+                console.log('myTrack[myTrack].ALBUM', myTracks[myTrack].album.name.toLowerCase());
+                trackUri.push(myTracks[myTrack].uri);
+              } /* else {
+                notFound.push(searchFilteredTrack.title);
+                console.log('NÃO ADCIONADAS', notFound);
+              } */
+              return myTracks[myTrack].name;
+            });
+          }, (err) => {
+            console.log('Something went wrong!', err);
+          });
+        // console.log('3 - FILTRO', searchFilteredTrack.title);
         return searchFilteredTrack;
       });
       return searchAlbumTitle;
     });
+    console.log('trackURI', trackUri);
+
     router.push('/playlists');
   };
 
@@ -101,6 +137,10 @@ export default function CollectionPreviwer() {
     scrollRef.current.scrollIntoView({ behavior: 'smooth' });
     // window.scrollTo({ top: scrollRef.current.scrollIntoView, behavior: 'smooth' });
   }, [albuns]);
+
+  const {
+    filteredAlbuns,
+  } = useContext(ListContext);
 
   return (
     <>
