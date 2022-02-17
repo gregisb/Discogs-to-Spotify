@@ -14,6 +14,10 @@ function Playlist() {
   const loading = status === 'loading';
   const [playlistTitle, setPlaylistTitle] = useState('');
 
+  const [toggleList, setToggleList] = useState(false);
+
+  const [getPlaylistTracks, setGetPlaylistTracks] = useState();
+
   console.log('Playlists: trackUri', trackUri);
 
   async function onSubmit(e) {
@@ -57,9 +61,16 @@ function Playlist() {
                         const playListImg = newUserPlaylist.body.images;
                         console.log('PLAYLIST image', playListImg);
                         const playListTracks = newUserPlaylist.body.tracks.items;
+                        setGetPlaylistTracks(playListTracks);
                         console.log('PLAYLIST tracks', playListTracks);
+
+                        return playListTracks;
                       }, (err) => {
                         console.log('Something went wrong!', err);
+                      }).then((toggleList) => {
+                        setToggleList(true);
+                      }, (err) => {
+                        console.log(err);
                       });
                   });
               }
@@ -70,37 +81,62 @@ function Playlist() {
       });
   }
 
-  return (
-    <>
-      <div className={styles.container}>
-        <form>
-          <label className={styles.label}>Give your playlist a name: </label>
-          <input
-            id="text"
-            type="text"
-            onChange={(e) => setPlaylistTitle(e.target.value)}
-            value={playlistTitle}
-            placeholder="Playlist title"
-            autoComplete="off"
-          />
-          <button className={styles.generatebutton} type="button" onClick={onSubmit}>Create new playlist</button>
+  return !toggleList ? (
+    <div className={styles.container}>
+      <form>
+        <label className={styles.label}>Give your playlist a name: </label>
+        <input
+          id="text"
+          type="text"
+          onChange={(e) => setPlaylistTitle(e.target.value)}
+          value={playlistTitle}
+          placeholder="Playlist title"
+          autoComplete="off"
+        />
+        <button className={styles.generatebutton} type="button" onClick={onSubmit}>Create new playlist</button>
 
-        </form>
+      </form>
+    </div>
+  ) : (
+    <div className={styles.Content}>
+      <div className={styles.newPlaylistHeader}>
+        <p>
+          A new playlist called
+          {' '}
+          {playlistTitle}
+          {' '}
+          has been created on your account with the following tracks:
+        </p>
       </div>
+      {Object.keys(getPlaylistTracks).map((getPlaylistTrack) => {
+        const tracks = getPlaylistTracks[getPlaylistTrack].track.album.artists;
+        console.log('TRACKS.album', tracks);
+        const trackName = getPlaylistTracks[getPlaylistTrack].track.name;
+        let artistName;
+        console.log('track NAME', trackName);
+        Object.keys(tracks).map((trackInfo) => {
+          artistName = tracks[trackInfo];
+          console.log('ARTIST NAME', artistName.name);
+          return artistName.name;
+        });
+        return (
+          <div className={styles.playlist}>
+            <ul className={styles.list}>
+              <li>
+                <p className={styles.trackName}>
+                  {trackName}
+                  <p className={styles.artistName}>
+                    {artistName.name}
+                  </p>
+                </p>
 
-      <div className={styles.newPlaylistContent}>
-        <div className={styles.newPlaylistHeader}>
-          <p>
-            A new playlist called
-            {' '}
-            {playlistTitle}
-            {' '}
-            has been created to yout account with the following tracks:
-          </p>
-          <div className={styles.songs} />
-        </div>
-      </div>
-    </>
+              </li>
+            </ul>
+
+          </div>
+        );
+      })}
+    </div>
   );
 }
 

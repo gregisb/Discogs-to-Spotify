@@ -1,72 +1,93 @@
 .container {
-    margin-top: 25px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    
-    input {
-        margin-top: 12px;
-        width: 80%;
-        height: 35px;
-        outline: none;
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        // padding: 10px;
-        background-color: rgba(255, 255, 255, 0.8);
-        padding-left: 20px;
-        transition: 0.6s ease;
-    
-        &:focus {
-          background-color: rgba(255, 255, 255, .9);
-          border: none;
-        }
-      }
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  input {
+    margin-top: 12px;
+    width: 80%;
+    height: 35px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    // padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding-left: 20px;
+    transition: 0.6s ease;
+
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.9);
+      border: none;
+    }
+  }
 }
 
 .label {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.3rem;
-  }
-
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+}
 
 .songs {
-    display: flex;
-    justify-content: flex-start;
-    align-items: baseline;
-    gap: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 20px;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    margin-left: 20px;
-    // margin-right: 1px;
-    margin-top: 20px;
-    margin-bottom: 30px;
+  margin-left: 20px;
+  // margin-right: 1px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 
-    ul {
-      margin-left: 16px;
-    }
+  ul {
+    margin-left: 16px;
+  }
 }
 
 .generatebutton {
-    height: 3rem;
-    border-radius: 3rem;
-    background: var(--green-500);
-    border: 0;
-    padding: 0 1.5rem;
-    margin-bottom: 20px;
+  height: 3rem;
+  border-radius: 3rem;
+  background: var(--green-500);
+  border: 0;
+  padding: 0 1.5rem;
+  margin-bottom: 20px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    color: var(--white);
-    font-weight: bold;
+  color: var(--white);
+  font-weight: bold;
 
-    transition: ease .5s;
+  transition: ease 0.5s;
 
-    &:hover {
-      filter: brightness(0.7);
-    }
+  &:hover {
+    filter: brightness(0.7);
   }
+}
+
+.playlist {
+  display: flex;
+  // align-items: baseline;
+  // justify-content: center;
+
+  .trackName {
+
+    font-size: 1.3rem;
+  }
+
+  .artistName {
+    margin-top: -10px;
+    padding: 0;
+
+    font-size: 1rem;
+  }
+
+  .list {
+    list-style-type: none;
+  }
+}
