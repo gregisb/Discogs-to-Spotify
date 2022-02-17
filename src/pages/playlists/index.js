@@ -13,14 +13,7 @@ export default function About() {
       </Head>
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
-          <h1>
-            Create a new
-            {' '}
-            <span>Spotify</span>
-            {' '}
-            playlist
-
-          </h1>
+          
           <Playlists />
         </section>
 

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import SpotifyWebApi from 'spotify-web-api-node';
+import { AiOutlineCopy } from 'react-icons/ai';
 import { ListContext, ListContextProvider } from '../../../context';
 import styles from './home.module.scss';
 
@@ -17,6 +18,8 @@ function Playlist() {
   const [toggleList, setToggleList] = useState(false);
 
   const [getPlaylistTracks, setGetPlaylistTracks] = useState();
+
+  const [playlistLink, setPlaylistLink] = useState('');
 
   console.log('Playlists: trackUri', trackUri);
 
@@ -57,6 +60,7 @@ function Playlist() {
                         const playlistName = newUserPlaylist.body.name;
                         console.log('PLAYLIST NAME', playlistName);
                         const playlistLink = newUserPlaylist.body.href;
+                        setPlaylistLink(playlistLink);
                         console.log('PLAYLIST link', playlistLink);
                         const playListImg = newUserPlaylist.body.images;
                         console.log('PLAYLIST image', playListImg);
@@ -83,6 +87,14 @@ function Playlist() {
 
   return !toggleList ? (
     <div className={styles.container}>
+      <h1>
+        Create a new
+        {' '}
+        <span>Spotify</span>
+        {' '}
+        playlist
+
+      </h1>
       <form>
         <label className={styles.label}>Give your playlist a name: </label>
         <input
@@ -100,13 +112,13 @@ function Playlist() {
   ) : (
     <div className={styles.Content}>
       <div className={styles.newPlaylistHeader}>
-        <p>
-          A new playlist called
-          {' '}
-          {playlistTitle}
-          {' '}
-          has been created on your account with the following tracks:
-        </p>
+        <h1>
+          Your new playlist has been created!
+        </h1>
+        <div className={styles.clipboard}>
+          <p>{playlistLink}</p>
+          <AiOutlineCopy onClick={() => setUrl('https://www.discogs.com/lists/Eletr%C3%B4nica/941179')} />
+        </div>
       </div>
       {Object.keys(getPlaylistTracks).map((getPlaylistTrack) => {
         const tracks = getPlaylistTracks[getPlaylistTrack].track.album.artists;
@@ -121,17 +133,22 @@ function Playlist() {
         });
         return (
           <div className={styles.playlist}>
-            <ul className={styles.list}>
+            <ol className={styles.list}>
               <li>
-                <p className={styles.trackName}>
-                  {trackName}
+                <div>
+                  <p className={styles.trackName}>
+                    {trackName}
+                  </p>
+                </div>
+                <div>
+
                   <p className={styles.artistName}>
                     {artistName.name}
-                  </p>
-                </p>
 
+                  </p>
+                </div>
               </li>
-            </ul>
+            </ol>
 
           </div>
         );
