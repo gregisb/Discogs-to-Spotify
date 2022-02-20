@@ -81,52 +81,43 @@ export default function CollectionPreviwer() {
 
   const router = useRouter();
 
-  let collectionUris = [];
+  const collectionUris = [];
 
   const handlePlaylistGeneration = (e) => {
     e.preventDefault();
     const results = {};
+    const notFound = [];
+
     Object.keys(albuns).forEach((album) => {
       results[album] = albuns[album].filter((track) => !discarted.includes(track.title));
     });
     setFilteredAlbuns(results);
 
-    // console.log('1 - collection results', results);
-    // console.log('2 - filteredAlbuns', filteredAlbuns);
     spotifyApi.setAccessToken(session.accessToken);
-    Object.keys(results).map((albumTitle) => {
-      const searchAlbumTitle = albumTitle;
-      console.log(searchAlbumTitle);
-
-      results[albumTitle].map((searchFilteredTrack) => {
-        spotifyApi.searchTracks(`track:${searchFilteredTrack.title} album:${searchAlbumTitle}`)
+    Object.keys(results).forEach((albumTitle) => {
+      results[albumTitle].forEach((track) => {
+        // TODO: avaliar inclusão do artista na busca
+        spotifyApi.searchTracks(`track:${track.title} album:${albumTitle}`)
           .then((data) => {
-            // console.log(`Search tracks by "${searchFilteredTrack.title}" in the track name and "${searchAlbumTitle}" in the album name`, data.body);
-            const myTracks = data.body.tracks.items;
-            console.log('myTracks', myTracks);
+            const spotifyTracks = data.body.tracks.items;
+            console.log('spotifyTracks', spotifyTracks);
 
-            Object.keys(myTracks).map((myTrack) => {
+            Object.keys(spotifyTracks).forEach((spotifyTrack) => {
               if (
-                searchFilteredTrack.title.toLowerCase() === myTracks[myTrack].name.toLowerCase()
-                && searchAlbumTitle.toLocaleLowerCase() === myTracks[myTrack].album.name.toLowerCase()) {
-                // console.log('myTrack[myTrack].name', myTracks[myTrack].name.toLowerCase());
-                // console.log('myTrack[myTrack].URI', myTracks[myTrack].uri);
-                // console.log('myTrack[myTrack].ALBUM', myTracks[myTrack].album.name.toLowerCase());
-                collectionUris.push(myTracks[myTrack].uri);
+                track.title.toLowerCase() === spotifyTracks[spotifyTrack].name.toLowerCase()
+                && albumTitle.toLocaleLowerCase()
+                === spotifyTracks[spotifyTrack].album.name.toLowerCase()) {
+                collectionUris.push(spotifyTracks[spotifyTrack].uri);
                 setTrackUri(collectionUris);
-              } /* else {
-                notFound.push(searchFilteredTrack.title);
+              } else {
+                notFound.push(track.title);
                 console.log('NÃO ADCIONADAS', notFound);
-              } */
-              return myTracks[myTrack].name;
+              }
             });
           }, (err) => {
             console.log('Something went wrong!', err);
           });
-        // console.log('3 - FILTRO', searchFilteredTrack.title);
-        return searchFilteredTrack;
       });
-      return searchAlbumTitle;
     });
 
     router.push('/playlists');
@@ -136,10 +127,6 @@ export default function CollectionPreviwer() {
     scrollRef.current.scrollIntoView({ behavior: 'smooth' });
     // window.scrollTo({ top: scrollRef.current.scrollIntoView, behavior: 'smooth' });
   }, [albuns]);
-
-  const {
-    filteredAlbuns,
-  } = useContext(ListContext);
 
   return (
     <>
@@ -175,7 +162,8 @@ export default function CollectionPreviwer() {
               </p>
 
             </div>
-            <ul>
+            <div>
+              {/* TODO: create react component track selector table */}
               {albuns[albumTitle].map((track) => (
                 <div className={styles.songs}>
                   {tracksArray.push(track.title)}
@@ -190,7 +178,7 @@ export default function CollectionPreviwer() {
                   </li>
                 </div>
               ))}
-            </ul>
+            </div>
 
           </div>
         ))}
