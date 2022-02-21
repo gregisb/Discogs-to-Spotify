@@ -23,7 +23,7 @@ export default function Collections() {
         </section>
 
       </main>
-      <img src="/images/vinyl.png" alt="Discogs to spotify" />
+      {/* <img src="/images/vinyl.png" alt="Discogs to spotify" /> */}
     </section>
   );
 }
