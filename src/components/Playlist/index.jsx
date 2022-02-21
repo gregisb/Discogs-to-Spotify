@@ -79,42 +79,13 @@ function Playlist() {
         allowtransparency="true"
         allow="encrypted-media"></iframe>
         */}
-        <Iframe title="Spotify Playlist" src={playlistLink} height="500" width="500" />
+        <Iframe title="Spotify Playlist" src={playlistLink} height="380" width="300" />
         <div className={styles.clipboard}>
           <p>{playlistLink}</p>
-          {/* <AiOutlineCopy onClick={() => setUrl('https://www.discogs.com/lists/Eletr%C3%B4nica/941179')} /> */}
+          <AiOutlineCopy onClick={() => setUrl('https://www.discogs.com/lists/Eletr%C3%B4nica/941179')} />
         </div>
       </div>
-      {Object.keys(getPlaylistTracks).map((getPlaylistTrack) => {
-        const tracks = getPlaylistTracks[getPlaylistTrack].track.album.artists;
-        const trackName = getPlaylistTracks[getPlaylistTrack].track.name;
-        let artistName;
-        Object.keys(tracks).map((trackInfo) => {
-          artistName = tracks[trackInfo];
-          return artistName.name;
-        });
-        return (
-          <div className={styles.playlist}>
-            <ol className={styles.list}>
-              <li>
-                <div>
-                  <p className={styles.trackName}>
-                    {trackName}
-                  </p>
-                </div>
-                <div>
 
-                  <p className={styles.artistName}>
-                    {artistName.name}
-
-                  </p>
-                </div>
-              </li>
-            </ol>
-
-          </div>
-        );
-      })}
     </div>
 
   ) : (

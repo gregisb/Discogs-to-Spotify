@@ -28,21 +28,12 @@ export function SignInButton() {
   };
 
   useEffect(() => {
-    if (!session && !loading) {
+    if (!session && !loading && router.pathname === '/collection') {
       router.replace('/');
     } else if (session && router.pathname === '/') {
       router.replace('/collection');
     } else if (session) {
       console.log(session);
-      spotifyApi.setAccessToken(session.accessToken);
-      // Search tracks whose albun's name contains 'To Pimp A Butterflyr',
-      // and track name contains 'Alright'
-      spotifyApi.searchTracks('track:Alright album:To Pimp A Butterfly')
-        .then((data) => {
-          console.log('Search tracks by "Alright" in the track name and "To Pimp A Butterfly" in the album name', data.body);
-        }, (err) => {
-          console.log('Something went wrong!', err);
-        });
     }
   }, [session, loading]);
 
