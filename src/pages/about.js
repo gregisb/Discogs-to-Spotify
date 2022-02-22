@@ -20,7 +20,11 @@ export default function About() {
             {' '}
             <a href="https://guilhermeregis.com" target="_blank" rel="noreferrer">Guilherme Regis</a>
             {' '}
-            that allows you to create Spotify playlists based on any Discogs lists.
+            that allows you to create Spotify playlists based on any
+            {' '}
+            <a href="https://discogs.com" target="_blank" rel="noreferrer">Discogs</a>
+            {' '}
+            lists.
             {' '}
             <br />
             To create a new playlist you need to sign in with your Spotify account and provide

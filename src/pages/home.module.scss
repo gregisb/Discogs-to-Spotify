@@ -87,6 +87,15 @@
         }
     }
 
+    a {
+        color: white;
+        transition: ease .5s;
+
+        &:hover {
+            color: var(--gray-300)
+        }
+    }
+
     button {
         margin-top: 2.5rem;
         width: 80%;
