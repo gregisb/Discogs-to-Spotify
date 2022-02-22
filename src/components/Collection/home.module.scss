@@ -169,3 +169,21 @@ form {
   }
 }
 
+.table, .row, .trackTd {
+  // border-top: 1px solid;
+  width: 40%;
+
+  @media (max-width: 375px) {
+    width: 60%;
+  }
+}
+
+.trackTd {
+  border-top: 1px solid var(--gray-800);
+}
+
+.toggleTd {
+  border-top: 1px solid var(--gray-800);
+  padding: 0.5em;
+  width: 20%;
+}

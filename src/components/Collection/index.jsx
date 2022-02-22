@@ -174,7 +174,17 @@ export default function CollectionPreviwer() {
               {/* TODO: create react component track selector table */}
               {albuns[albumTitle].map((track) => (
                 <div className={styles.songs}>
-                  <ul>
+                  <table className={styles.table} id="encounters">
+  <tr className={styles.row}>
+    <td className={styles.trackTd}>{track.title}</td>
+    <td className={styles.toggleTd}><Switch
+                        onChange={() => handleToggle(`${track.title}`)}
+                        checked={!discarted.includes(`${track.title}`)}
+                        size="small"
+                      /></td>
+  </tr>
+  </table>
+                  {/* <ul>
                     <li key={track.title} track={track.title}>
 
                       {track.title}
@@ -185,7 +195,7 @@ export default function CollectionPreviwer() {
                         size="small"
                       />
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               ))}
             </div>
