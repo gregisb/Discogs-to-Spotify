@@ -27,6 +27,7 @@ export default function CollectionPreviwer() {
   const [url, setUrl] = useState('');
   const [albuns, setAlbuns] = useState({});
   const [enableButton, setEnableButton] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const scrollRef = useRef(null);
 
@@ -34,6 +35,12 @@ export default function CollectionPreviwer() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (url === '') {
+      setErrorMessage('You need to provide a link to a Discogs list!');
+      return;
+    }
+    setErrorMessage('');
 
     const listId = url.split('/').pop();
 
@@ -148,6 +155,7 @@ export default function CollectionPreviwer() {
             placeholder="Place here the link to your Discogs list"
             autoComplete="off"
           />
+          <p className={styles.errorMessage}>{errorMessage}</p>
           <button type="button" onClick={onSubmit}>Import list</button>
 
         </form>
@@ -166,16 +174,18 @@ export default function CollectionPreviwer() {
               {/* TODO: create react component track selector table */}
               {albuns[albumTitle].map((track) => (
                 <div className={styles.songs}>
-                  {tracksArray.push(track.title)}
-                  <li key={track.title} track={track.title}>
+                  <ul>
+                    <li key={track.title} track={track.title}>
 
-                    {track.title}
-                    <Switch
-                      onChange={() => handleToggle(`${track.title}`)}
-                      checked={!discarted.includes(`${track.title}`)}
-                      size="small"
-                    />
-                  </li>
+                      {track.title}
+
+                      <Switch
+                        onChange={() => handleToggle(`${track.title}`)}
+                        checked={!discarted.includes(`${track.title}`)}
+                        size="small"
+                      />
+                    </li>
+                  </ul>
                 </div>
               ))}
             </div>

@@ -60,6 +60,14 @@
   }
 }
 
+form {
+  .errorMessage {
+    margin-top: -5px;
+    font-size: 1rem;
+    color: rgb(255, 75, 75);
+  }
+}
+
 .album {
   margin-top: 10px;
   display: flex;
@@ -67,10 +75,18 @@
 }
 
 .songs {
-  // list-style: upper-alpha;
+  // list-style: none;
   display: flex;
   align-items: center;
   margin-right: 1px;
+
+  list-style-position: outside;
+
+  li {
+    border-top: 1px solid var(--gray-800);
+    // border-left: 1px solid var(--gray-800);
+    // border-right: 1px solid var(--gray-800);
+  }
 }
 
 .generatebutton {
@@ -120,7 +136,13 @@
     justify-content: space-evenly;
     margin: 0;
     font-size: .85rem;
+
+    @media (max-width: 475px) {
+      font-size: 2.2vw;
+    }
   }
+
+
 
   svg {
     cursor: pointer;
@@ -132,6 +154,11 @@
 
       // background-color: var(--gray-900);
     }
+  }
+
+  @media (max-width: 475px) {
+    height: 10vh;
+    flex-direction: column;
   }
 }
 
