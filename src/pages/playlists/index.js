@@ -13,7 +13,7 @@ export default function About() {
       </Head>
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
-          
+
           <Playlists />
         </section>
 

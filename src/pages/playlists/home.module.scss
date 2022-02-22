@@ -10,9 +10,18 @@
 
     img{
         width: 30vw;
-        max-width: 600px;
+        max-width: 400px;
         opacity: .7;
+
+        margin-top: 30px;
+
+        @media (max-width: 545px) {
+            display: none;
+        }
     }
+    @media (max-width: 320px) {
+        margin-left: -10px;
+      }
 }
 
 .hero {
