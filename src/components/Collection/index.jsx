@@ -161,49 +161,45 @@ export default function CollectionPreviwer() {
         </form>
       </div>
 
-      <div ref={scrollRef}>
+      <div ref={scrollRef} className={styles.tables}>
         {Object.keys(albuns).map((albumTitle) => (
-          <div className="album1" key={albumTitle}>
+          <div className={styles.albumTitle} key={albumTitle}>
             <div className={styles.album}>
-              <p>
+              <table className={styles.albumTable}>
+                <tr className={styles.albumRow}>{albumTitle}</tr>
+
+              </table>
+              {/* <p>
                 {albumTitle}
-              </p>
+              </p> */}
 
             </div>
             <div>
               {/* TODO: create react component track selector table */}
               {albuns[albumTitle].map((track) => (
                 <div className={styles.songs}>
-                  <table className={styles.table} id="encounters">
-  <tr className={styles.row}>
-    <td className={styles.trackTd}>{track.title}</td>
-    <td className={styles.toggleTd}><Switch
-                        onChange={() => handleToggle(`${track.title}`)}
-                        checked={!discarted.includes(`${track.title}`)}
-                        size="small"
-                      /></td>
-  </tr>
-  </table>
-                  {/* <ul>
-                    <li key={track.title} track={track.title}>
+                  <table className={styles.table}>
+                    <tr className={styles.row}>
+                      <td className={styles.trackTd}>{track.title}</td>
+                      <td className={styles.toggleTd}>
+                        <Switch
+                          onChange={() => handleToggle(`${track.title}`)}
+                          checked={!discarted.includes(`${track.title}`)}
+                          size="small"
+                        />
 
-                      {track.title}
+                      </td>
+                    </tr>
+                  </table>
 
-                      <Switch
-                        onChange={() => handleToggle(`${track.title}`)}
-                        checked={!discarted.includes(`${track.title}`)}
-                        size="small"
-                      />
-                    </li>
-                  </ul> */}
                 </div>
               ))}
             </div>
 
           </div>
         ))}
-        {enableButton ? <button className={styles.generatebutton} type="button" onClick={handlePlaylistGeneration}>Generate playlist</button> : ''}
       </div>
+      {enableButton ? <button className={styles.generatebutton} type="button" onClick={handlePlaylistGeneration}>Generate playlist</button> : ''}
 
     </>
   );

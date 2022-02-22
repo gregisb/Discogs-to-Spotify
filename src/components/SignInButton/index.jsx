@@ -3,7 +3,7 @@ import { FiX } from 'react-icons/fi';
 
 import {
 
-  signIn, signOut, useSession, getCsrfToken,
+  signIn, signOut, useSession,
 } from 'next-auth/react';
 
 import SpotifyWebApi from 'spotify-web-api-node';
