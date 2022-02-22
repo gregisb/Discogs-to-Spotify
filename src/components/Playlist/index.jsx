@@ -72,6 +72,14 @@ function Playlist() {
       });
   }
 
+  const [clipboard, setClipboard] = useState(' ');
+
+  function copyToClipboard() {
+    navigator.clipboard.writeText(playlistLink);
+    setClipboard('Copied!');
+    setTimeout(() => setClipboard(' '), 3000);
+  }
+
   return listExists ? (
     <div className={styles.Content}>
       <div className={styles.newPlaylistHeader}>
@@ -89,8 +97,12 @@ function Playlist() {
         <Iframe title="Spotify Playlist" src={playlistLink} height="380" width="300" />
         <div className={styles.clipboard}>
           <p>{playlistLink}</p>
-          <AiOutlineCopy onClick={() => setUrl('https://www.discogs.com/lists/Eletr%C3%B4nica/941179')} />
+          <AiOutlineCopy onClick={() => copyToClipboard()} />
         </div>
+        <div className={styles.copy}>
+          <p>{clipboard}</p>
+        </div>
+
       </div>
 
     </div>
