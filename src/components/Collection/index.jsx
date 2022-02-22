@@ -192,7 +192,7 @@ export default function CollectionPreviwer() {
 
           </div>
         ))}
-        {enableButton ? <button className={styles.generatebutton} type="button" onClick={handlePlaylistGeneration}>Generate a playlist</button> : ''}
+        {enableButton ? <button className={styles.generatebutton} type="button" onClick={handlePlaylistGeneration}>Generate playlist</button> : ''}
       </div>
 
     </>
