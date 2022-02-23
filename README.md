@@ -9,7 +9,7 @@ It is simple and intuitive and you can test it even if you're not a Discogs user
 
 Just sign in with your Spotify account and link any Discogs list. Then you will select the tracks you want to import, give a name to your new Spotify playlist (that will be available on your Spotify profile) and listen to the songs, using our app or the Spotify client!
 
-Built using React with NextJS, SASS and JavaScript.
+Built using React with NextJS, Hooks, Context API, SASS, Material UI and JavaScript.
 OAuth2 using next-auth and HTTP requests using AXIOS.
 
 The main purpose is to integrate Discogs API with Spotify API. In future versions I plan to add more features, such as importing collections and wishlists from Discogs, as well as creating collections on Spotify.
