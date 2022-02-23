@@ -1,6 +1,6 @@
 ### Discogs to Spotify
 
-<img src="./public/images/home.png" alt="Discogs to Spotify" width="300" />
+<img src="./public/images/home.png" alt="Discogs to Spotify"  />
 
 <p align="center">About</p>
 
