@@ -35,7 +35,11 @@ The main purpose is to integrate Discogs API with Spotify API. In future version
 <img src="./public/images/result.png" alt="Discogs to Spotify"  />
 
 
+## TODOs
 
+* Tests
+* Migrate to TypeScript
+* Migrate to styled-components
 
 
 
