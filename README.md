@@ -1,4 +1,4 @@
-### Discogs to Spotify
+# Discogs to Spotify
 
 <img src="./public/images/home.png" alt="Discogs to Spotify"  />
 
@@ -38,7 +38,7 @@ The main purpose is to integrate Discogs API with Spotify API. In future version
 
 
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
 ## Getting Started
 
