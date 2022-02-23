@@ -14,6 +14,28 @@ OAuth2 using next-auth and HTTP requests using AXIOS.
 
 The main purpose is to integrate Discogs API with Spotify API. In future versions I plan to add more features, such as importing collections and wishlists from Discogs, as well as creating collections on Spotify.
 
+# Technologies
+
+* React
+* Next
+* next-auth
+* AXIOS
+* SASS
+* Material UI
+* JavaScript
+
+# Linter
+
+* ESLint
+
+<p>More screenshots</p>
+
+<img src="./public/images/collection1.png" alt="Discogs to Spotify"  />
+<img src="./public/images/collection2.png" alt="Discogs to Spotify"  />
+<img src="./public/images/result.png" alt="Discogs to Spotify"  />
+
+
+
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
