@@ -2,7 +2,7 @@
 
 <img src="./public/images/home.png" alt="Discogs to Spotify"  />
 
-<p align="center">About</p>
+### About
 
 Discogs to Spotify is a app that creates Spotify playlists based on any Discogs list.
 It is simple and intuitive and you can test it even if you're not a Discogs user (hope you enjoy Daft Punk!).
@@ -28,7 +28,7 @@ The main purpose is to integrate Discogs API with Spotify API. In future version
 
 * ESLint
 
-<p>More screenshots</p>
+### More screenshots
 
 <img src="./public/images/collection1.png" alt="Discogs to Spotify"  />
 <img src="./public/images/collection2.png" alt="Discogs to Spotify"  />
