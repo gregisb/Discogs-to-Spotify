@@ -28,18 +28,19 @@ The main purpose is to integrate Discogs API with Spotify API. In future version
 
 * ESLint
 
-### More screenshots
+## TODOs
+
+* Tests
+* Migrate to TypeScript
+* Migrate to styled-components
+
+## More screenshots
 
 <img src="./public/images/collection1.png" alt="Discogs to Spotify"  />
 <img src="./public/images/collection2.png" alt="Discogs to Spotify"  />
 <img src="./public/images/result.png" alt="Discogs to Spotify"  />
 
 
-## TODOs
-
-* Tests
-* Migrate to TypeScript
-* Migrate to styled-components
 
 
 
