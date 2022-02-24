@@ -1,7 +1,32 @@
 import NextAuth from 'next-auth';
 import SessionProviders from 'next-auth/react';
 import SpotifyProvider from 'next-auth/providers/spotify';
-import spotifyApi, { LOGIN_URL } from '../../../../lib/spotify';
+import SpotifyWebApi from 'spotify-web-api-node';
+
+// TODO remover escopos desnecessarios
+const scopes = [
+  'user-read-email',
+  'playlist-read-private',
+  'playlist-read-collaborative',
+  'playlist-modify-private',
+  'playlist-modify-public',
+  'user-read-email',
+  'streaming',
+  'user-read-private',
+  'user-library-read',
+  'user-top-read',
+  'user-read-playback-state',
+  'user-modify-playback-state',
+  'user-read-currently-playing',
+  'user-read-recently-played',
+  'user-follow-read',
+].join(',');
+
+const spotifyApi = new SpotifyWebApi({
+  clientId: process.env.SPOTIFY_CLIENT_ID,
+  clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+  authorization: { params: { scope: scopes } },
+});
 
 async function refreshAccessToken(token) {
   try {
@@ -9,7 +34,6 @@ async function refreshAccessToken(token) {
     spotifyApi.setRefreshToken(token.refreshToken);
 
     const { body: refreshedToken } = await spotifyApi.refreshAccessToken();
-    console.log('Refreshed token is ', refreshedToken);
 
     return {
       ...token,
@@ -34,7 +58,6 @@ const options = {
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID,
       clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-      authorization: LOGIN_URL,
     }),
   ],
   params: {
