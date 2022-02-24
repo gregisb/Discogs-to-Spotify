@@ -32,9 +32,9 @@ export function SignInButton() {
       router.replace('/');
     } else if (session && router.pathname === '/') {
       router.replace('/collection');
-    } else if (session) {
-      console.log(session);
-    }
+    } // else if (session) {
+    //   console.log(session);
+    // }
   }, [session, loading]);
 
   return session ? (

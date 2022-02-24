@@ -107,7 +107,6 @@ export default function CollectionPreviwer() {
         spotifyApi.searchTracks(`track:${track.title} album:${albumTitle}`)
           .then((data) => {
             const spotifyTracks = data.body.tracks.items;
-            console.log('spotifyTracks', spotifyTracks);
 
             Object.keys(spotifyTracks).forEach((spotifyTrack) => {
               if (
@@ -118,7 +117,6 @@ export default function CollectionPreviwer() {
                 setTrackUri(collectionUris);
               } else {
                 notFound.push(track.title);
-                console.log('NÃO ADCIONADAS', notFound);
               }
             });
           }, (err) => {
