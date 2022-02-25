@@ -5,11 +5,12 @@ import SpotifyWebApi from 'spotify-web-api-node';
 
 // TODO remover escopos desnecessarios
 const scopes = [
-  // 'user-read-email',
-  // 'playlist-read-private',
-  // 'playlist-read-collaborative',
-  // 'playlist-modify-private',
+  'user-read-email',
+  'playlist-read-private',
+  'playlist-read-collaborative',
+  'playlist-modify-private',
   'playlist-modify-public',
+
 ].join(',');
 
 const spotifyApi = new SpotifyWebApi({
