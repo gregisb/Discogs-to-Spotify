@@ -1,4 +1,5 @@
-# Discogs to Spotify
+# Discogs to Spotify ![License](https://img.shields.io/badge/license-GPL-blue) ![Vercel](https://vercelbadge.vercel.app/api/gregisb/Discogs-to-Spotify)
+
 
 <img src="./public/images/home.png" alt="Discogs to Spotify" />
 
@@ -9,45 +10,30 @@ It is simple and intuitive and you can test it even if you're not a Discogs user
 
 Just sign in with your Spotify account and link any Discogs list. Then you will select the tracks you want to import, give a name to your new Spotify playlist (that will be available on your Spotify profile) and listen to the songs, using our app or the Spotify client!
 
-Built using React with NextJS, Hooks, Context API, SASS, Material UI and JavaScript.
-OAuth2 using next-auth and HTTP requests using AXIOS.
+Built using React with NextJS, integrates Discogs public API with Spotify user API using OAuth2.
 
-The main purpose is to integrate Discogs API with Spotify API. In future versions I plan to add more features, such as importing collections and wishlists from Discogs, as well as creating collections on Spotify.
 
-# Technologies
-
-* React
-* Next
-* next-auth
-* AXIOS
-* SASS
-* Material UI
-* JavaScript
-
-# Linter
-
-* ESLint
-
-## TODOs
-
-* Tests
-* Migrate to TypeScript
-* Migrate to styled-components
-
-## More screenshots
+## Screenshots
 
 <img src="./public/images/collection1.png" alt="Discogs to Spotify"  />
 <img src="./public/images/collection2.png" alt="Discogs to Spotify"  />
 <img src="./public/images/result.png" alt="Discogs to Spotify"  />
 
 
+## Contributing
 
+1. Create an issue to discuss the feature.
 
+2. Create a feature or bug branch linked to the issue.
+
+3. Issue a PR when its ready.
 
 
 ## Getting Started
 
-First, run the development server:
+### Starting the application
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -55,11 +41,24 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Linting
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Using ESLint
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+yarn lint-fix
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Deploy
 
+Deployment made automatically on Vercel from GitHub.
+
+Branch `main` (Production): https://discogs-to-spotify.vercel.app/
+
+Branch `staging`: https://discogs-to-spotify-staging.vercel.app/
+
+
+
+### License
+
+See LICENSE file.
