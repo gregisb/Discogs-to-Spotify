@@ -1,8 +1,4 @@
-# Discogs to Spotify
-
-![License](https://img.shields.io/badge/license-GPL-blue)
-
-![Vercel](https://vercelbadge.vercel.app/api/gregisb/Discogs-to-Spotify)
+# Discogs to Spotify ![License](https://img.shields.io/badge/license-GPL-blue) ![Vercel](https://vercelbadge.vercel.app/api/gregisb/Discogs-to-Spotify)
 
 
 <img src="./public/images/home.png" alt="Discogs to Spotify" />
