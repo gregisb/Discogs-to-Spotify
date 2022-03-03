@@ -21,7 +21,40 @@
       background-color: rgba(255, 255, 255, 0.9);
       border: none;
     }
+    @media (max-width: 375px) {
+      width: 100%;
+    }
   }
+  .generatebutton {
+    width: 80%;
+    height: 3rem;
+    border-radius: 3rem;
+    background: var(--green-500);
+    border: 0;
+    padding: 0 1.5rem;
+    margin-bottom: 20px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    color: var(--white);
+    font-weight: bold;
+  
+    transition: ease 0.5s;
+  
+  
+    &:hover {
+      filter: brightness(0.7);
+    }
+  
+    @media (max-width: 375px) {
+      font-weight: bold;
+      height: 50px;
+      width: 100%;
+    }
+  }
+  
 
   
 }
@@ -46,34 +79,6 @@ form {
 }
 
 
-.generatebutton {
-  height: 3rem;
-  border-radius: 3rem;
-  background: var(--green-500);
-  border: 0;
-  padding: 0 1.5rem;
-  margin-bottom: 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: var(--white);
-  font-weight: bold;
-
-  transition: ease 0.5s;
-
-
-  &:hover {
-    filter: brightness(0.7);
-  }
-
-  @media (max-width: 330px) {
-    font-weight: bold;
-    height: 50px
-
-  }
-}
 
 
 

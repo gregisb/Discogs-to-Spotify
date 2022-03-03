@@ -3,7 +3,7 @@
 
 <img src="./public/images/home.png" alt="Discogs to Spotify" />
 
-### About
+# About
 
 Discogs to Spotify is a app that creates Spotify playlists based on any Discogs list.
 It is simple and intuitive and you can test it even if you're not a Discogs user (hope you enjoy Daft Punk!).
@@ -19,8 +19,17 @@ Built using React with NextJS, integrates Discogs public API with Spotify user A
 <img src="./public/images/collection2.png" alt="Discogs to Spotify"  />
 <img src="./public/images/result.png" alt="Discogs to Spotify"  />
 
+## Disclaimer
 
-## Contributing
+> We are still waiting for the quota extension from Spotify so that the app works with any user. Therefore, we provide an Spotify account for testing:
+>
+>**E-mail:** discogs.to.spotify@gmail.com
+>
+>**Password:** dts123456
+>
+
+
+# Contributing
 
 1. Create an issue to discuss the feature.
 
@@ -29,9 +38,9 @@ Built using React with NextJS, integrates Discogs public API with Spotify user A
 3. Issue a PR when its ready.
 
 
-## Getting Started
+# Getting Started
 
-### Starting the application
+## Starting the application
 
 Run the development server:
 
@@ -41,7 +50,7 @@ npm run dev
 yarn dev
 ```
 
-### Linting
+## Linting
 
 Using ESLint
 
@@ -49,7 +58,7 @@ Using ESLint
 yarn lint-fix
 ```
 
-### Deploy
+## Deploy
 
 Deployment made automatically on Vercel from GitHub.
 
@@ -59,6 +68,6 @@ Branch `staging`: https://discogs-to-spotify-staging.vercel.app/
 
 
 
-### License
+## License
 
 See LICENSE file.
