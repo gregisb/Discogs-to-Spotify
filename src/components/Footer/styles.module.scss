@@ -7,6 +7,15 @@
     
     margin-top: 20px;
     // padding: 10px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    text-align: center;
+
+    a {
+        color: var(--green-500)
+    }
+
+    @media(max-width: 325px) {
+        padding-left: 26px;
+    }
 
 }
