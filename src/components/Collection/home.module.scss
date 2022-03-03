@@ -28,6 +28,10 @@
       background-color: rgba(255, 255, 255, 1);
       border: none;
     }
+
+    @media (max-width: 425px) {
+      width: 100%;
+    }
   }
 
   button {
@@ -48,6 +52,9 @@
 
     &:hover {
       filter: brightness(0.7);
+    }
+    @media (max-width: 425px) {
+      width: 100%;
     }
   }
 
@@ -74,7 +81,7 @@
     margin: 0 0 300px 0;
     
     padding: 0;
-    max-width: 100%;
+    max-width: 80%;
     // padding: 8px;
     margin-bottom: 25px;
   
@@ -96,9 +103,9 @@
       }
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 425px) {
       // margin-left: -15px;
-      width: 100%;
+      max-width: 100%;
       padding: 10px;
       p {
         padding-right: 6px;

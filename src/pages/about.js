@@ -33,6 +33,12 @@ export default function About() {
             <a href="https://discogs.com" target="_blank" rel="noreferrer">Discogs</a>
             .
           </p>
+
+          <p>
+            Want to keep this project running? Help me by
+            {' '}
+            <a href="https://www.buymeacoffee.com/gregis" target="_blank" rel="noreferrer">buying me a coffee!</a>
+          </p>
         </section>
 
         <img src="/images/vinyl.png" alt="Discogs to spotify" />
