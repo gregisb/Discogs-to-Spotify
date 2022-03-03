@@ -21,11 +21,7 @@ Built using React with NextJS, integrates Discogs public API with Spotify user A
 
 ## Disclaimer
 
-> We are still waiting for the quota extension from Spotify so that the app works with any user. Therefore, we provide an Spotify account for testing:
->
->**E-mail:** discogs.to.spotify@gmail.com
->
->**Password:** dts123456
+> We are still waiting for the quota extension from Spotify so that the app works with any user.
 >
 
 
