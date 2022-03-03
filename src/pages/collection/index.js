@@ -14,7 +14,7 @@ export default function Collections() {
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
           <h1>
-            Export your Discogs collection to a new
+            Export your Discogs lists to a new
             <span> Spotify</span>
             {' '}
             playlist
