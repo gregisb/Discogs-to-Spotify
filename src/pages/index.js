@@ -20,7 +20,7 @@ export default function Home() {
             Your
             <span style={{ color: 'white' }}> Discogs</span>
             {' '}
-            collections on
+            lists on
             <span> Spotify</span>
             .
           </p>
