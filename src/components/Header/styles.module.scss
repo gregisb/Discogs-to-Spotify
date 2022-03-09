@@ -1,89 +1,111 @@
 .headerContainer {
     height: 5rem;
     border-bottom: 1px solid var(--gray-800);
-}
 
-.headerContent {
-    height: 5rem;
-    padding: 0 7% 0 7%;
+    .headerContent {
+        height: 5rem;
+        padding: 0 7% 0 7%;
+    
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        // flex-wrap: nowrap;
+        gap: 50px;
 
-    display: flex;
-    align-items: center;
-    // justify-content: space-between;
-    // flex-wrap: nowrap;
-    gap: 50px;
-
-    @media (max-width: 575px) {
-        h2 {
-            display: none;
+        @media (max-width: 674px) {
+            h2 {
+                display: none;
+            }
         }
-    }
+    
+        @media (max-width: 575px) {
+            h2 {
+                display: none;
+            }
+        }
+    
+        @media (max-width: 445px) {
+            button {
+                span {
+                    display: none;
+                }
+    
+                svg {
+                    margin: 0 !important;
+                }
+            }
+        }
+    
+        nav {
+            // margin-left: 5rem;
+            // height: 5rem;
+            flex-grow: 1;
+    
+            a {
+                // display: inline-block;
+                // position: relative;
+                padding: 0 .5rem;
+                height: 5rem;
+                line-height: 5rem;
+                color: var(--gray-300);
+    
+                transition: color .4s;
+    
+                & + a {
+                    margin-left: 2rem;
+                }
+    
+                &:hover {
+                    color: var(--white)
+                }
+    
+                &.active {
+                    color: var(--gray-100);
+                    font-weight: bold;
+                }
+    
+                &.active::after {
+                    content: '';
+                    height: 3px;
+                    border-radius: 3px 3px 0 0;
+                    width: 100%;
+                    position: absolute;
+                    bottom: 1px;
+                    left: 0;
+                    background: var(--green-500)
+                }
+            }
+        }
+    
+        > button {
+            // margin-left: auto
+        }
 
-    @media (max-width: 445px) {
-        button {
+        @media (max-width: 492px) {
             span {
                 display: none;
             }
-
-            svg {
-                margin: 0 !important;
-            }
         }
-    }
 
-    nav {
-        // margin-left: 5rem;
-        // height: 5rem;
-        flex-grow: 1;
-
-        a {
-            // display: inline-block;
-            // position: relative;
-            padding: 0 .5rem;
-            height: 5rem;
-            line-height: 5rem;
-            color: var(--gray-300);
-
-            transition: color .4s;
-
-            & + a {
-                margin-left: 2rem;
-            }
-
-            &:hover {
-                color: var(--white)
-            }
-
-            &.active {
-                color: var(--gray-100);
-                font-weight: bold;
-            }
-
-            &.active::after {
-                content: '';
-                height: 3px;
-                border-radius: 3px 3px 0 0;
-                width: 100%;
-                position: absolute;
-                bottom: 1px;
-                left: 0;
-                background: var(--green-500)
-            }
-        }
-    }
-
-    > button {
-        // margin-left: auto
-    }
-
-    @media (max-width: 375px) {
-        height: 100px;
-        font-size: .75rem;
-        margin-top: -20px;
-        padding-top: 10px;
-
-        > button {
+            
+        @media (max-width: 375px) {
+            height: 100px;
+            font-size: .95rem;
             margin-top: -20px;
+            padding-top: 10px;
+    
+            > button {
+                margin-top: -20px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            height: 100px;
+            font-size: .75rem;
+            // margin-top: -20px;
+            // padding-top: 10px;
+    
+            
         }
     }
 }
