@@ -13,16 +13,20 @@ Just sign in with your Spotify account and link any Discogs list. Then you will 
 Built using React with NextJS, integrates Discogs public API with Spotify user API using OAuth2.
 
 
+> "Dear Discogs to Spotify team,
+>
+> Thank you for submitting **Discogs to Spotify** to Spotify for review. This is a notification that your application has been granted a quota extension.
+>
+> Thank you for developing on the Spotify Developer Platform!"
+>
+> Developer Platform Team, Spotify
+
 ## Screenshots
 
 <img src="./public/images/collection1.png" alt="Discogs to Spotify"  />
 <img src="./public/images/collection2.png" alt="Discogs to Spotify"  />
 <img src="./public/images/result.png" alt="Discogs to Spotify"  />
 
-## Disclaimer
-
-> We are still waiting for the quota extension from Spotify so that the app works with any user.
->
 
 
 # Contributing
