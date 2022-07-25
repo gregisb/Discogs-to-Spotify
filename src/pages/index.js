@@ -9,6 +9,7 @@ export default function Home() {
     <>
       <Head>
         <title>Home | Discogs to Spotify</title>
+
       </Head>
       <main className={styles.contentContainer}>
         <section className={styles.hero}>

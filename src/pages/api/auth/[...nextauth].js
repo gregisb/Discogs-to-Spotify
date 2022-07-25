@@ -3,7 +3,6 @@ import SessionProviders from 'next-auth/react';
 import SpotifyProvider from 'next-auth/providers/spotify';
 import SpotifyWebApi from 'spotify-web-api-node';
 
-// TODO remover escopos desnecessarios
 const scopes = [
   'user-read-email',
   'playlist-read-private',
