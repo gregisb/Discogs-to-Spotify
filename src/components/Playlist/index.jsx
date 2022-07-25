@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { AiOutlineCopy } from 'react-icons/ai';
 import { ListContext, ListContextProvider } from '../../../context';
 import styles from './home.module.scss';
+import { runFireWorks } from '../../utils';
 
 function Iframe({
   src, height, width, title,
@@ -59,6 +59,7 @@ function Playlist() {
               .then((newUserPlaylist) => {
                 setPlaylistLink(newUserPlaylist.body.external_urls.spotify);
                 setGetPlaylistTracks(newUserPlaylist.body.tracks.items);
+                runFireWorks();
               }, (err) => {
                 console.log('Something went wrong!', err);
               }).then(() => {
